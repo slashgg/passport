@@ -3,7 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport", "Passport\Passport.csproj", "{D5C510F9-C63C-480A-A637-45DB8F394147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport", "Passport\Passport.csproj", "{D5C510F9-C63C-480A-A637-45DB8F394147}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{EE4F7926-D64C-4D5E-BDCC-39524C50B354}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2591BCF3-B7EA-494E-B905-E817FECC2F2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumers", "Consumers", "{56B62907-6931-461E-9087-6308622F0E83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{95CEBEEE-1495-4B1E-8534-6A9A9DD06A4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport.Models", "Passport.Models\Passport.Models.csproj", "{458AFDB3-95E4-4204-AD0C-C151155397A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Services", "Passport.Services\Passport.Services.csproj", "{3A1B9729-638F-416C-9603-B10C11B3A609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport.Interfaces", "Passport.Interfaces\Passport.Interfaces.csproj", "{55E3D77C-84A7-4489-9669-964D0EB567D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Repositories", "Passport.Repositories\Passport.Repositories.csproj", "{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +31,32 @@ Global
 		{D5C510F9-C63C-480A-A637-45DB8F394147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5C510F9-C63C-480A-A637-45DB8F394147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5C510F9-C63C-480A-A637-45DB8F394147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{458AFDB3-95E4-4204-AD0C-C151155397A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458AFDB3-95E4-4204-AD0C-C151155397A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458AFDB3-95E4-4204-AD0C-C151155397A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458AFDB3-95E4-4204-AD0C-C151155397A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A1B9729-638F-416C-9603-B10C11B3A609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A1B9729-638F-416C-9603-B10C11B3A609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A1B9729-638F-416C-9603-B10C11B3A609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A1B9729-638F-416C-9603-B10C11B3A609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E3D77C-84A7-4489-9669-964D0EB567D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E3D77C-84A7-4489-9669-964D0EB567D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E3D77C-84A7-4489-9669-964D0EB567D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E3D77C-84A7-4489-9669-964D0EB567D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5C510F9-C63C-480A-A637-45DB8F394147} = {56B62907-6931-461E-9087-6308622F0E83}
+		{458AFDB3-95E4-4204-AD0C-C151155397A6} = {2591BCF3-B7EA-494E-B905-E817FECC2F2D}
+		{3A1B9729-638F-416C-9603-B10C11B3A609} = {EE4F7926-D64C-4D5E-BDCC-39524C50B354}
+		{55E3D77C-84A7-4489-9669-964D0EB567D0} = {95CEBEEE-1495-4B1E-8534-6A9A9DD06A4D}
+		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0} = {2591BCF3-B7EA-494E-B905-E817FECC2F2D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F90B71D-7AE0-4956-BF0D-502508BDB1B6}
