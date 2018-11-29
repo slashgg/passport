@@ -2,5 +2,24 @@
   "editor.formatOnSave": true,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
-  "eslint.enable": false
+  "eslint.enable": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/*.js": true,
+    "**/CVS": true,
+    "node_modules": true,
+    "package-lock.json": true,
+    "yarn.lock": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "telemetry.enableTelemetry": false,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }

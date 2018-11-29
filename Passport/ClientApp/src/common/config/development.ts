@@ -1,8 +1,7 @@
 import { config, PassportConfig } from 'passport/common/config';
 
-export default {
-  ...config,
-  ...{
-    // development overrides here
-  },
-} as PassportConfig;
+Object.assign<PassportConfig, Partial<PassportConfig>>(config, {
+  // development overrides occur here.
+});
+
+export default config;

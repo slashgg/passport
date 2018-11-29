@@ -3,6 +3,8 @@
   "rules": {
     "interface-name": false,
     "no-console": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-implicit-dependencies": [true, "dev", ["passport"]],
+    "no-submodule-imports": false
   }
 }
