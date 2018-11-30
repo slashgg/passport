@@ -19,6 +19,7 @@ class RegisterFormComponent extends React.Component<{}, State> {
   };
 
   private redirectTimeout: number;
+  private submitTimeout: number;
 
   public componentDidMount() {
     if (this.context.user) {
@@ -29,6 +30,10 @@ class RegisterFormComponent extends React.Component<{}, State> {
   public componentWillUnmount() {
     if (this.redirectTimeout) {
       window.clearTimeout(this.redirectTimeout);
+    }
+
+    if (this.submitTimeout) {
+      window.clearTimeout(this.submitTimeout);
     }
   }
 
@@ -44,8 +49,8 @@ class RegisterFormComponent extends React.Component<{}, State> {
         </Heading>
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 flex justify-center">
-            <form onSubmit={this.handleSubmit} method="post" action="/v1/register" className="w-full">
-              <fieldset disabled={this.state.isSubmitting}>
+            <form onSubmitCapture={this.handleSubmit} method="post" action="/v1/register" className="w-full">
+              <fieldset disabled={this.state.isSubmitting} name="model">
                 <div className="flex flex-col">
                   <div className="mt-4">
                     <label htmlFor="email" className="font-bold text-xs text-primary uppercase font-sans">
@@ -91,9 +96,15 @@ class RegisterFormComponent extends React.Component<{}, State> {
   };
 
   private handleSubmit = () => {
-    this.setState({
-      isSubmitting: true,
-    });
+    // We use a timeout here because the setting isSubmitted to true disables the fields we are submitting
+    // for registration. We need to ensure the form is on the wire before we disable the fields.
+    this.submitTimeout = window.setTimeout(() => {
+      this.setState({
+        isSubmitting: true,
+      });
+    }, 50);
+
+    return true;
   };
 }
 

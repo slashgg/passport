@@ -150,7 +150,6 @@ module.exports = function(env, argv) {
     output,
     plugins,
     resolve,
-    output,
   };
 
   if (isDev) {

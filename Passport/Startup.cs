@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,6 +19,7 @@ namespace Passport
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
       // In production, the React files will be served from this directory
@@ -49,8 +49,12 @@ namespace Passport
       app.UseMvc(routes =>
       {
         routes.MapRoute(
-                  name: "default",
-                  template: "{controller}/{action=Index}/{id?}");
+            name: "areaRoute",
+            template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+        routes.MapRoute(
+            name: "default",
+            template: "{controller=Home}/{action=Index}/{id?}");
       });
 
       app.UseSpa(spa =>
@@ -59,7 +63,7 @@ namespace Passport
 
         if (env.IsDevelopment())
         {
-          spa.UseReactDevelopmentServer(npmScript: "start");
+          spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
         }
       });
     }
