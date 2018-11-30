@@ -5,6 +5,7 @@
     "no-console": false,
     "no-unused-expression": false,
     "no-implicit-dependencies": [true, "dev", ["passport"]],
-    "no-submodule-imports": false
+    "no-submodule-imports": false,
+    "no-object-literal-type-assertion": false
   }
 }

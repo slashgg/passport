@@ -1,6 +1,9 @@
 import { initDiwali } from '@slashgg/diwali';
-import { PassportConfig } from 'passport/common/config';
+import { History } from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
 import * as ReactDOM from 'react-dom';
+
+import { PassportConfig } from 'passport/common/config';
 
 export let passport: Passport;
 
@@ -10,6 +13,7 @@ export function initPassport(config: PassportConfig) {
 
 export class Passport {
   public config: PassportConfig;
+  public history: History = createBrowserHistory();
 
   constructor(config: PassportConfig) {
     this.config = config;

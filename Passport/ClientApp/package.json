@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
-    "@slashgg/diwali": "^0.0.2",
+    "@slashgg/diwali": "0.0.4",
+    "classnames": "^2.2.6",
+    "history": "^4.7.2",
     "react": "^16.6.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.6.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.2.2"
   },
   "scripts": {
@@ -17,8 +20,12 @@
     "build": "yarn && cross-env webpack --mode production --display-error-details"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.6",
+    "@types/history": "^4.7.2",
     "@types/react": "^16.7.8",
     "@types/react-dom": "^16.0.11",
+    "@types/react-router": "^4.4.1",
+    "@types/react-router-dom": "^4.3.1",
     "autoprefixer": "^9.3.1",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
