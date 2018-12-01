@@ -1,0 +1,43 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Passport.DTOs;
+using Passport.Interfaces;
+using Svalbard;
+using System.Threading.Tasks;
+
+namespace Passport.Areas.v1.Controllers
+{
+  [Area("v1")]
+  [Route("api/[area]/[controller]")]
+  [ApiController]
+  public class SigninController : ControllerBase
+  {
+    private readonly IPassportService passport;
+
+    public SigninController(IPassportService passport)
+    {
+      this.passport = passport;
+    }
+
+    [HttpPost]
+    public async Task<OperationResult> Index([FromBody] Signin model)
+    {
+      if (model == null)
+      {
+        return BadRequest();
+      }
+
+      var result = await passport.SigninAsync(model.Email, model.Password, model.ReturnUrl, model.RememberMe);
+      if (result.Successful)
+      {
+        return Ok();
+      }
+
+      foreach (var error in result.Errors)
+      {
+        ModelState.AddModelError(error.Key, error.Message);
+      }
+
+      return BadRequest();
+    }
+  }
+}

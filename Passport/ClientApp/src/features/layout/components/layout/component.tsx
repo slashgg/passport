@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import { Background } from 'passport/components/background';
+import { Toaster } from 'passport/components/toaster';
 
 import bg from './esports-bg.jpg';
 
@@ -25,6 +26,9 @@ class LayoutComponent extends React.Component<Props> {
     const classes = classNames('bg-primary-white min-h-screen flex pt-10 md:pt-0', this.props.type);
     return (
       <Background url={bg} className={classes}>
+        <div className="fixed pin-t w-screen">
+          <Toaster />
+        </div>
         {this.props.children}
       </Background>
     );

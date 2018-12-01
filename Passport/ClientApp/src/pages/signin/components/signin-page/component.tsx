@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { RouterProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 import { Layout, LayoutType } from 'passport/features/layout';
 
-type Props = RouterProps;
+type Props = RouteComponentProps;
 
 class SigninPageComponent extends React.Component<Props> {
   public render() {
@@ -11,4 +11,4 @@ class SigninPageComponent extends React.Component<Props> {
   }
 }
 
-export const SigninPage: React.ComponentClass<RouterProps> = SigninPageComponent;
+export const SigninPage: React.ComponentClass<RouteComponentProps> = SigninPageComponent;

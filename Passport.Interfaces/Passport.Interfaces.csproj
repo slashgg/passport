@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Passport.DTOs\Passport.DTOs.csproj" />
+    <ProjectReference Include="..\Passport.Models\Passport.Models.csproj" />
+    <ProjectReference Include="..\Passport.Utility\Passport.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

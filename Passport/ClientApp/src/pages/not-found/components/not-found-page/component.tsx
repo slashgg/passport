@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { RouterProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
-type Props = RouterProps;
+type Props = RouteComponentProps;
 
 class NotFoundPageComponent extends React.Component<Props> {
   public render() {
@@ -10,4 +10,4 @@ class NotFoundPageComponent extends React.Component<Props> {
   }
 }
 
-export const NotFoundPage: React.ComponentClass<RouterProps> = NotFoundPageComponent;
+export const NotFoundPage: React.ComponentClass<RouteComponentProps> = NotFoundPageComponent;

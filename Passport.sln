@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Interfaces", "Pass
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Repositories", "Passport.Repositories\Passport.Repositories.csproj", "{1CBDF155-DF90-4FAD-BB50-42EA44B820D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport.DTOs", "Passport.DTOs\Passport.DTOs.csproj", "{9012E648-9641-4F14-97B1-1F3F02852E9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.DTOs", "Passport.DTOs\Passport.DTOs.csproj", "{9012E648-9641-4F14-97B1-1F3F02852E9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport.Utility", "Passport.Utility\Passport.Utility.csproj", "{47040096-FA56-41E0-86D9-3583BED8F9C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{9012E648-9641-4F14-97B1-1F3F02852E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9012E648-9641-4F14-97B1-1F3F02852E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9012E648-9641-4F14-97B1-1F3F02852E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47040096-FA56-41E0-86D9-3583BED8F9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47040096-FA56-41E0-86D9-3583BED8F9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47040096-FA56-41E0-86D9-3583BED8F9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47040096-FA56-41E0-86D9-3583BED8F9C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{55E3D77C-84A7-4489-9669-964D0EB567D0} = {95CEBEEE-1495-4B1E-8534-6A9A9DD06A4D}
 		{1CBDF155-DF90-4FAD-BB50-42EA44B820D0} = {2591BCF3-B7EA-494E-B905-E817FECC2F2D}
 		{9012E648-9641-4F14-97B1-1F3F02852E9D} = {95CEBEEE-1495-4B1E-8534-6A9A9DD06A4D}
+		{47040096-FA56-41E0-86D9-3583BED8F9C2} = {95CEBEEE-1495-4B1E-8534-6A9A9DD06A4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F90B71D-7AE0-4956-BF0D-502508BDB1B6}

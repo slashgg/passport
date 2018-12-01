@@ -1,9 +1,19 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Passport.Interfaces;
+using Passport.Models;
+using Passport.Models.Context;
+using Passport.Services;
+using SendGrid;
+using Svalbard;
 
 namespace Passport
 {
@@ -19,7 +29,28 @@ namespace Passport
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddTransient<IPassportService, PassportService>();
+      services.AddTransient<IEmailService, EmailService>();
+      services.AddTransient<ISendGridClient>(provider =>
+      {
+        var accessor = provider.GetRequiredService<IOptions<SendGridClientOptions>>();
+        return new SendGridClient(accessor.Value);
+      });
+
+      services.Configure<SendGridClientOptions>(options =>
+      {
+        options.ApiKey = "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";
+        options.Version = "v3";
+      });
       services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
+      services.Configure<IdentityOptions>(options =>
+      {
+        options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#";
+        options.User.RequireUniqueEmail = true;
+        options.Password.RequireNonAlphanumeric = false;
+        options.SignIn.RequireConfirmedEmail = false;
+      });
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
       // In production, the React files will be served from this directory
@@ -27,6 +58,34 @@ namespace Passport
       {
         configuration.RootPath = "ClientApp/build";
       });
+
+      services.AddDbContext<PassportDbContext>(options =>
+      {
+        options.UseSqlServer(Configuration.GetConnectionString("PassportDbContext"), builder => builder.MigrationsAssembly("Passport.Models"));
+        options.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
+        options.UseLazyLoadingProxies();
+      });
+
+      services.AddIdentity<PassportUser, IdentityRole>()
+        .AddEntityFrameworkStores<PassportDbContext>()
+        .AddDefaultTokenProviders();
+
+      services.AddSvalbard();
+
+      services.AddIdentityServer(config =>
+      {
+        config.Events.RaiseErrorEvents = true;
+        config.Events.RaiseFailureEvents = true;
+        config.Events.RaiseSuccessEvents = true;
+        config.Events.RaiseFailureEvents = true;
+        config.UserInteraction.ErrorUrl = "/error";
+      })
+        .AddDeveloperSigningCredential()
+        .AddInMemoryPersistedGrants()
+        .AddInMemoryIdentityResources(Configuration.GetSection("Identity:IdentityResources"))
+        .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
+        .AddInMemoryClients(Configuration.GetSection("Identity:Clients"))
+        .AddAspNetIdentity<PassportUser>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,15 +105,13 @@ namespace Passport
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
 
+      app.UseIdentityServer();
+
       app.UseMvc(routes =>
       {
         routes.MapRoute(
-            name: "areaRoute",
-            template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-        routes.MapRoute(
             name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
+            template: "api/{area}/{controller=Home}/{action=Index}/{id?}");
       });
 
       app.UseSpa(spa =>

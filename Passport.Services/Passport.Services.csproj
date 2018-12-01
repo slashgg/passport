@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.6" />
+    <PackageReference Include="Sendgrid" Version="9.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Passport.Interfaces\Passport.Interfaces.csproj" />
+    <ProjectReference Include="..\Passport.Models\Passport.Models.csproj" />
+    <ProjectReference Include="..\Passport.Utility\Passport.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

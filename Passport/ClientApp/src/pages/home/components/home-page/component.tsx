@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Redirect, RouterProps } from 'react-router';
+import { Redirect, RouteComponentProps } from 'react-router';
 
-type Props = RouterProps;
+type Props = RouteComponentProps;
 
 class HomePageComponent extends React.Component<Props> {
   public render() {
@@ -10,4 +10,4 @@ class HomePageComponent extends React.Component<Props> {
   }
 }
 
-export const HomePage: React.ComponentClass<RouterProps> = HomePageComponent;
+export const HomePage: React.ComponentClass<RouteComponentProps> = HomePageComponent;

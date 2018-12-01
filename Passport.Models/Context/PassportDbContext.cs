@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace Passport.Models.Context
 {
   public class PassportDbContext : IdentityDbContext<PassportUser>
   {
+    public PassportDbContext(DbContextOptions<PassportDbContext> options) : base(options)
+    {
+
+    }
   }
 }

@@ -48,15 +48,15 @@
     "body": [
       "import classNames from 'classnames';",
       "import * as React from 'react';\n",
-      "import { RouterProps } from 'react-router';\n",
-      "type Props = RouterProps;\n",
+      "import { RouteComponentProps } from 'react-router';\n",
+      "type Props = RouteComponentProps;\n",
       "class ${1:Name}PageComponent extends React.Component<Props> {",
       "\trender() {",
       "\t\tconst classes = classNames('${2:classes}')",
       "\t\treturn <${3:div} className={classes}>{this.props.children}</$3>;",
       "\t}",
       "}\n",
-      "export const $1Page: React.ComponentClass<RouterProps> = $1PageComponent;\n"
+      "export const $1Page: React.ComponentClass<RouteComponentProps> = $1PageComponent;\n"
     ]
   },
   "component.index": {

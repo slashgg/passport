@@ -28,7 +28,7 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.8"
 
-"@fortawesome/free-solid-svg-icons@^5.4.2":
+"@fortawesome/free-solid-svg-icons@^5.4.2", "@fortawesome/free-solid-svg-icons@^5.5.0":
   version "5.5.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.5.0.tgz#4d815df4bba076f209eb409bc56d9d830367a7c0"
   dependencies:
@@ -106,6 +106,10 @@
 "@types/prop-types@*":
   version "15.5.6"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
+
+"@types/query-string@^6.1.1":
+  version "6.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@types/query-string/-/query-string-6.1.1.tgz#1cfd9209c8dbd91b940192c8a2b7005d2a743e6f"
 
 "@types/react-dom@^16.0.11":
   version "16.0.11"
@@ -3719,6 +3723,13 @@ qs@6.5.2, qs@~6.5.2:
   version "6.5.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
+query-string@^6.2.0:
+  version "6.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/query-string/-/query-string-6.2.0.tgz#468edeb542b7e0538f9f9b1aeb26f034f19c86e1"
+  dependencies:
+    decode-uri-component "^0.2.0"
+    strict-uri-encode "^2.0.0"
+
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -3813,7 +3824,7 @@ react-overlays@^0.7.4:
     prop-types-extra "^1.0.1"
     warning "^3.0.0"
 
-react-pose@^4.0.1:
+react-pose@^4.0.1, react-pose@^4.0.2:
   version "4.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/react-pose/-/react-pose-4.0.2.tgz#0b4ad5e5d58534e426f7287c27916d7114c2ab7c"
   dependencies:
@@ -4503,6 +4514,10 @@ stream-shift@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/stream-shift/-/stream-shift-1.0.0.tgz#d5c752825e5367e786f78e18e445ea223a155952"
 
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
+
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -5104,6 +5119,10 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
+
+whatwg-fetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
 
 which-module@^1.0.0:
   version "1.0.0"

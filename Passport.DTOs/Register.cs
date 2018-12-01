@@ -11,5 +11,7 @@ namespace Passport.DTOs
     public string Username { get; set; }
     [DataMember(Name = "password")]
     public string Password { get; set; }
+    [DataMember(Name = "returnUrl")]
+    public string ReturnUrl { get; set; }
   }
 }

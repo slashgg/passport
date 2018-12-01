@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { PoseGroup } from 'react-pose';
 import { Router } from 'react-router';
 
+import { Error } from 'passport/features/error';
 import { RootRouter } from 'passport/routes/root';
 import { passport } from '../passport';
 import {
+  AlertHandler,
   LoginHandler,
   LogoutHandler,
+  NotifyHandler,
   PassportActions,
   PassportContext,
   PassportContextType,
@@ -19,9 +23,12 @@ class App extends React.Component<{}, PassportState> implements PassportActions 
 
   public render() {
     const contextValue: PassportContextType = {
+      alert: this.alert,
+      clear: this.clear,
       login: this.login,
       logout: this.logout,
-      user: this.state.user,
+      notify: this.notify,
+      ...this.state,
     };
 
     return (
@@ -42,6 +49,24 @@ class App extends React.Component<{}, PassportState> implements PassportActions 
   public logout: LogoutHandler = () => {
     this.setState({
       user: undefined,
+    });
+  };
+
+  public alert: AlertHandler = error => {
+    this.setState({
+      error,
+    });
+  };
+
+  public notify: NotifyHandler = notification => {
+    this.setState({
+      notification,
+    });
+  };
+
+  public clear = (type: 'error' | 'notification') => {
+    this.setState({
+      [type]: undefined,
     });
   };
 }
