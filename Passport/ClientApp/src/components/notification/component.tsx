@@ -1,4 +1,4 @@
-import { ButtonType, IconButton } from '@slashgg/diwali';
+import { ButtonType, IconButton, Paragraph } from '@slashgg/diwali';
 import classNames from 'classnames';
 import * as React from 'react';
 import posed from 'react-pose';
@@ -23,7 +23,7 @@ export const NotificationPresentation: React.RefForwardingComponent<Ref, PublicP
           <IconButton icon="times" type={ButtonType.Text} onClick={props.onClickClose} className="ml-auto" />
         )}
       </div>
-      {props.message}
+      <Paragraph className="pb-4 pl-4">{props.message}</Paragraph>
     </div>
   );
 };

@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Passport.DTOs;
 using Passport.Interfaces;
+using Passport.Utility;
 using Svalbard;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Passport.Areas.v1.Controllers
 {
@@ -22,10 +25,29 @@ namespace Passport.Areas.v1.Controllers
     [HttpGet]
     public async Task<OperationResult> Index([FromQuery] string email)
     {
-      string token = await passportService.GeneratePasswordResetToken(email);
-      await emailService.SendPasswordResetEmail(token, email);
+      var token = await passportService.GeneratePasswordResetTokenAsync(email);
+      var encoded = HttpUtility.UrlEncode(token);
+
+      await emailService.SendPasswordResetEmail(encoded, email);
 
       return Ok();
+    }
+
+    [HttpPut]
+    public async Task<OperationResult> Index([FromBody] PasswordReset model)
+    {
+      ServiceResult result = await passportService.ResetPasswordAsync(model);
+      if (result.Successful)
+      {
+        return Ok();
+      }
+
+      foreach (var error in result.Errors)
+      {
+        ModelState.AddModelError(error.Key, error.Message);
+      }
+
+      return BadRequest();
     }
   }
 }

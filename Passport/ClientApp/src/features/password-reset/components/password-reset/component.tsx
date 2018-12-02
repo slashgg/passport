@@ -1,38 +1,56 @@
 import * as React from 'react';
 
 import { Panel } from 'passport/components/panel';
-import { passport } from 'passport/core/passport';
 import { PassportContext, PassportContextType } from 'passport/core/passport-context';
 import { OperationError } from 'passport/features/error/models/operation-error';
 import { PasswordResetModel } from '../../models/password-reset-model';
+import { ResetPasswordForm } from '../password-reset-form';
 
 export interface PublicProps {
   token: string;
+  userId: string;
+}
+
+export interface State {
+  isSubmitting: boolean;
 }
 
 type Props = PublicProps;
 
-class PasswordResetComponent extends React.Component<Props> {
+class PasswordResetComponent extends React.Component<Props, State> {
   public static contextType = PassportContext;
   public context!: PassportContextType;
+  public state: State = {
+    isSubmitting: false,
+  };
 
-  private redirectTimeout: number;
+  private isUnmounted = false;
 
   public componentWillUnmount() {
-    if (this.redirectTimeout) {
-      window.clearTimeout(this.redirectTimeout);
-    }
+    this.isUnmounted = true;
   }
 
   public render() {
-    return <Panel heading="Password Reset">Reset Password soon</Panel>;
+    return (
+      <Panel heading="Password Reset">
+        <ResetPasswordForm onSubmit={this.handleFormSubmit} isSubmitting={this.state.isSubmitting} />
+      </Panel>
+    );
   }
 
   private handleFormSubmit = (password: string) => {
+    this.setState({
+      isSubmitting: true,
+    });
+
     const dto: PasswordResetModel = {
       password,
       token: this.props.token,
+      userId: this.props.userId,
     };
+
+    // We generate alerts so we should clear them before we send
+    this.context.clear('error');
 
     window
       .fetch('api/v1/password', {
@@ -50,11 +68,13 @@ class PasswordResetComponent extends React.Component<Props> {
         if (error) {
           this.context.alert(error);
         } else {
-          this.context.notify('Your password has been changed. Redirecting you to the signin page.');
-          this.redirectTimeout = window.setTimeout(() => {
-            this.redirectTimeout = 0;
-            passport.history.push('/signin');
-          }, 3000);
+          this.context.notify('Your password has been changed.');
+        }
+
+        if (!this.isUnmounted) {
+          this.setState({
+            isSubmitting: false,
+          });
         }
       });
   };

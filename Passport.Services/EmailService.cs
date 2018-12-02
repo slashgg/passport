@@ -46,7 +46,7 @@ namespace Passport.Services
       }
 
       var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
-      var link = $"{baseUrl}/password-reset?token={token}";
+      var link = $"{baseUrl}/password-reset?token={token}&id={user.Id}";
 
       // Setup the personalization
       var templateData = new PasswordResetTemplateData

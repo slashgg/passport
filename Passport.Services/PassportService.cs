@@ -29,7 +29,7 @@ namespace Passport.Services
       this.events = events;
     }
 
-    public async Task<string> GeneratePasswordResetToken(string email)
+    public async Task<string> GeneratePasswordResetTokenAsync(string email)
     {
       var user = await userManager.FindByEmailAsync(email);
       return await userManager.GeneratePasswordResetTokenAsync(user);
@@ -83,6 +83,40 @@ namespace Passport.Services
           });
           result.Code = 400;
         }
+      }
+
+      return result;
+    }
+
+    public async Task<ServiceResult> ResetPasswordAsync(PasswordReset model)
+    {
+      var result = new ServiceResult();
+
+      var user = await userManager.FindByIdAsync(model.UserId);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound
+        });
+        result.Code = 404;
+
+        return result;
+      }
+
+      var identityResult = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
+      if (!identityResult.Succeeded)
+      {
+        foreach (var error in identityResult.Errors)
+        {
+          result.Errors.Add(new ServiceResult.Error
+          {
+            Key = error.Code,
+            Message = error.Description,
+          });
+        }
+        result.Code = 400;
       }
 
       return result;
