@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { PoseGroup } from 'react-pose';
 import { Router } from 'react-router';
 
-import { Error } from 'passport/features/error';
 import { RootRouter } from 'passport/routes/root';
 import { passport } from '../passport';
 import {

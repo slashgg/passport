@@ -27,6 +27,7 @@ namespace Passport.Areas.v1.Controllers
       var token = await passportService.GeneratePasswordResetTokenAsync(email);
       await emailService.SendPasswordResetEmail(token, email);
 
+      // We say Ok no matter what. We don't reveal that a user doesn't exist.
       return Ok();
     }
 
