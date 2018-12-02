@@ -1,10 +1,8 @@
-import classNames from 'classnames';
 import * as React from 'react';
 
 import { Panel } from 'passport/components/panel';
+import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
 import { passport } from 'passport/core/passport';
-import { PassportContext, PassportContextType } from 'passport/core/passport-context';
-import { OperationError } from 'passport/features/error/models/operation-error';
 import { RegisterModel } from '../../models/register-model';
 import { RegisterForm } from '../register-form';
 
@@ -12,65 +10,35 @@ export interface PublicProps {
   returnUrl?: string;
 }
 
-type Props = PublicProps;
+type Props = PublicProps & WithDataProps;
 
-export interface State {
-  isSubmitting: boolean;
-}
-
-class RegisterComponent extends React.Component<Props, State> {
-  public static contextType = PassportContext;
-  public context!: PassportContextType;
-  public state: State = {
-    isSubmitting: false,
-  };
-
-  private redirectTimeout: number;
-
+class RegisterComponent extends React.Component<Props> {
   public componentDidMount() {
     if (this.context.user) {
-      this.redirectTimeout = window.setTimeout(this.redirect, 5000);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this.redirectTimeout) {
-      window.clearTimeout(this.redirectTimeout);
+      this.redirect();
     }
   }
 
   public render() {
-    const classes = classNames('flex flex-col shadow bg-white p-6 mt-8 rounded');
     return (
       <Panel heading="Register">
-        <RegisterForm onSubmit={this.onSubmit} isSubmitting={this.state.isSubmitting} />
+        <RegisterForm onSubmit={this.onSubmit} isSubmitting={this.props.isSubmitting} />
       </Panel>
     );
   }
 
   private onSubmit = (model: RegisterModel) => {
-    // Reset the error state since we are an alerter.
-    this.context.clear('error');
+    const { returnUrl } = this.props;
+    const payload = {
+      returnUrl,
+      ...model,
+    };
 
-    window
-      .fetch('/api/v1/register', {
-        body: JSON.stringify({ returnUrl: this.props.returnUrl, ...model }),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'post',
-      })
-      .then((res: Response) => {
-        if (!res.ok) {
-          return res.json();
-        }
-        return Promise.resolve();
-      })
-      .then((error?: OperationError) => {
-        if (error) {
-          this.context.alert(error);
-        } else {
-          this.redirect();
-        }
-      });
+    this.props.invoke(payload).then((success: boolean) => {
+      if (success) {
+        passport.history.push(returnUrl || '/register-success');
+      }
+    });
   };
 
   private redirect = () => {
@@ -78,4 +46,9 @@ class RegisterComponent extends React.Component<Props, State> {
   };
 }
 
-export const Register: React.ComponentClass<PublicProps> = RegisterComponent;
+const withDataOptionsMapper: WithDataOptionsMapper<PublicProps> = () => ({
+  method: 'post',
+  path: '/api/v1/register',
+});
+
+export const Register: React.ComponentClass<PublicProps> = withData(RegisterComponent, withDataOptionsMapper);

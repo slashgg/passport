@@ -9,6 +9,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Passport.Services
 {
@@ -45,8 +46,10 @@ namespace Passport.Services
         return result;
       }
 
+      // We need to encode the token since it will be used in a reset link.
+      var encodedToken = HttpUtility.UrlEncode(token);
       var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
-      var link = $"{baseUrl}/password-reset?token={token}&id={user.Id}";
+      var link = $"{baseUrl}/password-reset?token={encodedToken}&id={user.Id}";
 
       // Setup the personalization
       var templateData = new PasswordResetTemplateData

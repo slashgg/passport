@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { Link } from 'passport/components/link';
 import { RegisterModel } from '../../models/register-model';
+import { LegalConsent } from '../legal-consent/component';
 
 export interface PublicProps {
   isSubmitting: boolean;
@@ -56,16 +57,10 @@ class RegisterFormComponent extends React.Component<Props, State> {
             </div>
           </div>
           <div className="flex flex-col w-full">
-            <Paragraph>
-              By clicking Register, you indicate that you accept our <Link to="use-policy"> use</Link> and{' '}
-              <Link to="privacy-policy">privacy</Link> policies.
-            </Paragraph>
+            <LegalConsent />
             <Button className="ml-auto" block>
               Register
             </Button>
-            <Paragraph className="text-center">
-              Have an account? <Link to="/signin">Sign In</Link>
-            </Paragraph>
           </div>
         </fieldset>
       </form>

@@ -4,7 +4,6 @@ using Passport.Interfaces;
 using Passport.Utility;
 using Svalbard;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Passport.Areas.v1.Controllers
 {
@@ -26,9 +25,7 @@ namespace Passport.Areas.v1.Controllers
     public async Task<OperationResult> Index([FromQuery] string email)
     {
       var token = await passportService.GeneratePasswordResetTokenAsync(email);
-      var encoded = HttpUtility.UrlEncode(token);
-
-      await emailService.SendPasswordResetEmail(encoded, email);
+      await emailService.SendPasswordResetEmail(token, email);
 
       return Ok();
     }

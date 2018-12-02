@@ -1,6 +1,8 @@
 import { Button, Input } from '@slashgg/diwali';
 import * as React from 'react';
 
+import { Label } from 'passport/components/label';
+
 export interface PublicProps {
   isSubmitting: boolean;
   onSubmit: (password: string) => void;
@@ -24,9 +26,7 @@ class ResetPasswordFormComponent extends React.Component<Props, State> {
         <fieldset disabled={this.props.isSubmitting}>
           <div className="flex flex-col">
             <div className="my-4">
-              <label htmlFor="new-pass" className="font-bold text-xs text-primary uppercase font-sans">
-                New Password
-              </label>
+              <Label htmlFor="new-pass">New Password</Label>
               <Input
                 name="new-pass"
                 id="new-pass"

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
 
+import { ForgotPasswordPage } from 'passport/pages/forgot-password';
 import { HomePage } from 'passport/pages/home';
 import { NotFoundPage } from 'passport/pages/not-found';
 import { PasswordResetPage } from 'passport/pages/password-reset';
@@ -14,6 +15,7 @@ class RootRouterComponent extends React.Component {
         <Route path="/" exact component={HomePage} />
         <Route path="/signin" exact component={SigninPage} />
         <Route path="/register" exact component={RegisterPage} />
+        <Route path="/forgot-password" exact component={ForgotPasswordPage} />
         <Route path="/password-reset" exact component={PasswordResetPage} />
         <Route component={NotFoundPage} />
       </Switch>

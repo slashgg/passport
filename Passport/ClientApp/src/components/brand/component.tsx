@@ -26,7 +26,7 @@ export const Brand: React.SFC<PublicProps> = props => {
   });
 
   return (
-    <BaseInteractive linkTo="/">
+    <BaseInteractive linkTo="https://slash.gg">
       <div className="flex items-center justify-center">
         <img src={logo} alt="slashgg" className={props.size} />
         <h1 className={classes}>slashgg</h1>

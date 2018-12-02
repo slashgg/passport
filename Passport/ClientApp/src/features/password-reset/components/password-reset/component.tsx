@@ -1,8 +1,8 @@
+import { Paragraph } from '@slashgg/diwali';
 import * as React from 'react';
 
 import { Panel } from 'passport/components/panel';
-import { PassportContext, PassportContextType } from 'passport/core/passport-context';
-import { OperationError } from 'passport/features/error/models/operation-error';
+import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
 import { PasswordResetModel } from '../../models/password-reset-model';
 import { ResetPasswordForm } from '../password-reset-form';
 
@@ -12,16 +12,14 @@ export interface PublicProps {
 }
 
 export interface State {
-  isSubmitting: boolean;
+  resetSuccess: boolean;
 }
 
-type Props = PublicProps;
+type Props = PublicProps & WithDataProps;
 
 class PasswordResetComponent extends React.Component<Props, State> {
-  public static contextType = PassportContext;
-  public context!: PassportContextType;
   public state: State = {
-    isSubmitting: false,
+    resetSuccess: false,
   };
 
   private isUnmounted = false;
@@ -33,51 +31,36 @@ class PasswordResetComponent extends React.Component<Props, State> {
   public render() {
     return (
       <Panel heading="Password Reset">
-        <ResetPasswordForm onSubmit={this.handleFormSubmit} isSubmitting={this.state.isSubmitting} />
+        {this.state.resetSuccess && (
+          <Paragraph>Your password reset is complete. You may close this window.</Paragraph>
+        )}
+        {!this.state.resetSuccess && (
+          <ResetPasswordForm onSubmit={this.handleFormSubmit} isSubmitting={this.props.isSubmitting} />
+        )}
       </Panel>
     );
   }
 
   private handleFormSubmit = (password: string) => {
-    this.setState({
-      isSubmitting: true,
-    });
-
     const dto: PasswordResetModel = {
       password,
       token: this.props.token,
       userId: this.props.userId,
     };
 
-    // We generate alerts so we should clear them before we send
-    this.context.clear('error');
-
-    window
-      .fetch('api/v1/password', {
-        body: JSON.stringify(dto),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'put',
-      })
-      .then(res => {
-        if (!res.ok) {
-          return res.json();
-        }
-        return Promise.resolve();
-      })
-      .then((error?: OperationError) => {
-        if (error) {
-          this.context.alert(error);
-        } else {
-          this.context.notify('Your password has been changed.');
-        }
-
-        if (!this.isUnmounted) {
-          this.setState({
-            isSubmitting: false,
-          });
-        }
-      });
+    this.props.invoke(dto).then((success: boolean) => {
+      if (!this.isUnmounted) {
+        this.setState({
+          resetSuccess: success,
+        });
+      }
+    });
   };
 }
 
-export const PasswordReset: React.ComponentClass<PublicProps> = PasswordResetComponent;
+const withDataMapper: WithDataOptionsMapper<PublicProps> = props => ({
+  method: 'put',
+  path: '/api/v1/password',
+});
+
+export const PasswordReset: React.ComponentClass<PublicProps> = withData(PasswordResetComponent, withDataMapper);

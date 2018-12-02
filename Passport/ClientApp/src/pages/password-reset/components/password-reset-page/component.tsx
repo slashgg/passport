@@ -10,9 +10,7 @@ type Props = RouteComponentProps;
 
 class PasswordResetPageComponent extends React.Component<Props> {
   public render() {
-    const params = queryString.parse(this.props.location.search, {
-      decode: true,
-    });
+    const params = queryString.parse(this.props.location.search);
     if (!params.token || !params.id) {
       return (
         <Layout type={LayoutType.FullScreen}>
