@@ -12,6 +12,7 @@ using Passport.Interfaces;
 using Passport.Models;
 using Passport.Models.Context;
 using Passport.Services;
+using Passport.Utility.Configuration;
 using SendGrid;
 using Svalbard;
 
@@ -33,15 +34,11 @@ namespace Passport
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
       {
-        var accessor = provider.GetRequiredService<IOptions<SendGridClientOptions>>();
-        return new SendGridClient(accessor.Value);
+        var accessor = provider.GetRequiredService<IOptions<SendGridConfig>>();
+        return new SendGridClient(accessor.Value.ApiKey);
       });
 
-      services.Configure<SendGridClientOptions>(options =>
-      {
-        options.ApiKey = "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";
-        options.Version = "v3";
-      });
+      services.Configure<SendGridConfig>(Configuration.GetSection("SendGrid"));
       services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
       services.Configure<IdentityOptions>(options =>
       {
@@ -79,10 +76,12 @@ namespace Passport
         config.Events.RaiseSuccessEvents = true;
         config.Events.RaiseFailureEvents = true;
         config.UserInteraction.ErrorUrl = "/error";
+        config.UserInteraction.LoginUrl = "/signin";
+        config.UserInteraction.LoginReturnUrlParameter = "returnUrl";
       })
         .AddDeveloperSigningCredential()
         .AddInMemoryPersistedGrants()
-        .AddInMemoryIdentityResources(Configuration.GetSection("Identity:IdentityResources"))
+        .AddInMemoryIdentityResources(InMemoryIdentityResources.IdentityResources)
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
         .AddInMemoryClients(Configuration.GetSection("Identity:Clients"))
         .AddAspNetIdentity<PassportUser>();

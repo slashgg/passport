@@ -37,9 +37,10 @@ class SigninComponent extends React.Component<Props> {
   }
 
   private handleSubmit = (model: PasswordSignin) => {
-    this.props.invoke(model).then((success: boolean) => {
+    this.props.invoke({ returnUrl: this.props.returnUrl, ...model }).then((success: boolean) => {
       if (success) {
-        passport.history.push(this.props.returnUrl);
+        // We have to invoke a full page reload so the server picks this up.
+        window.location.href = this.props.returnUrl;
       }
     });
   };

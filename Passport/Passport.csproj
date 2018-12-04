@@ -18,7 +18,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" />
     <PackageReference Include="Sendgrid" Version="9.10.0" />
-    <PackageReference Include="Svalbard" Version="1.0.6" />
+    <PackageReference Include="Svalbard" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
