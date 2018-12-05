@@ -24,6 +24,7 @@
     "build": "yarn && cross-env webpack --mode production --display-error-details"
   },
   "devDependencies": {
+    "@types/": "fortawesome/react-fontawesome",
     "@types/classnames": "^2.2.6",
     "@types/history": "^4.7.2",
     "@types/query-string": "^6.1.1",

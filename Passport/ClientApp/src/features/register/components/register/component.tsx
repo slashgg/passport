@@ -36,13 +36,13 @@ class RegisterComponent extends React.Component<Props> {
 
     this.props.invoke(payload).then((success: boolean) => {
       if (success) {
-        passport.history.push(returnUrl || '/register-success');
+        passport.history.push(returnUrl || '/');
       }
     });
   };
 
   private redirect = () => {
-    passport.history.push('/signin-complete', { returnUrl: this.props.returnUrl });
+    passport.history.push(this.props.returnUrl || '/');
   };
 }
 

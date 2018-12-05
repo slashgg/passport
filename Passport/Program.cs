@@ -27,6 +27,7 @@ namespace Passport
             options.Secrets = new string[] { "SendGrid" };
           });
         })
+        .UseSentry()
         .UseStartup<Startup>();
     }
   }

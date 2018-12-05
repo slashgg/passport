@@ -29,6 +29,12 @@ namespace Passport.Services
       this.events = events;
     }
 
+    public async Task<string> GenerateEmailVerificationTokenAsync(string emailAddress)
+    {
+      var user = await userManager.FindByEmailAsync(emailAddress);
+      return await userManager.GenerateEmailConfirmationTokenAsync(user);
+    }
+
     public async Task<string> GeneratePasswordResetTokenAsync(string email)
     {
       var user = await userManager.FindByEmailAsync(email);
@@ -168,9 +174,40 @@ namespace Passport.Services
       return result;
     }
 
+    public async Task<ServiceResult> VerifyEmailAsync(VerifyEmail model)
+    {
+      var result = new ServiceResult();
+
+      var user = await userManager.FindByIdAsync(model.UserId);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.InvalidSignin),
+          Message = Errors.InvalidSignin
+        });
+        result.Code = 401;
+
+        return result;
+      }
+
+      var identityResult = await userManager.ConfirmEmailAsync(user, model.Token);
+      if (!identityResult.Succeeded)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.InvalidSignin),
+          Message = Errors.InvalidSignin
+        });
+        result.Code = 401;
+      }
+
+      return result;
+    }
+
     private async Task<bool> ValidateReturnUrlAsync(string returnUrl)
     {
-      IdentityServer4.Models.AuthorizationRequest context = await interaction.GetAuthorizationContextAsync(returnUrl);
+      var context = await interaction.GetAuthorizationContextAsync(returnUrl);
       return context != null && interaction.IsValidReturnUrl(returnUrl);
     }
   }

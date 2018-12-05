@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Brand, BrandSize } from '../brand';
 
 export interface PublicProps {
-  heading: string;
+  heading?: string;
 }
 
 export const Panel: React.SFC<PublicProps> = props => {
@@ -16,9 +16,11 @@ export const Panel: React.SFC<PublicProps> = props => {
         <div className="pb-4">
           <Brand size={BrandSize.Small} />
         </div>
-        <Heading color={HeadingColor.Alternative} type={HeadingType.Subtitle}>
-          {props.heading}
-        </Heading>
+        {props.heading && (
+          <Heading color={HeadingColor.Alternative} type={HeadingType.Subtitle}>
+            {props.heading}
+          </Heading>
+        )}
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 flex justify-center">{props.children}</div>
         </div>

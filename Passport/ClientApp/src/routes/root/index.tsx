@@ -7,6 +7,7 @@ import { NotFoundPage } from 'passport/pages/not-found';
 import { PasswordResetPage } from 'passport/pages/password-reset';
 import { RegisterPage } from 'passport/pages/register';
 import { SigninPage } from 'passport/pages/signin';
+import { VerifyEmailPage } from 'passport/pages/verify-email';
 
 class RootRouterComponent extends React.Component {
   public render() {
@@ -17,6 +18,7 @@ class RootRouterComponent extends React.Component {
         <Route path="/register" exact component={RegisterPage} />
         <Route path="/forgot-password" exact component={ForgotPasswordPage} />
         <Route path="/password-reset" exact component={PasswordResetPage} />
+        <Route path="/verify-email" exact component={VerifyEmailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     );

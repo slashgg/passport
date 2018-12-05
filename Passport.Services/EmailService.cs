@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using Passport.Interfaces;
 using Passport.Models;
+using Passport.Services.Extensions;
 using Passport.Services.Helpers;
 using Passport.Utility;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -16,7 +16,7 @@ namespace Passport.Services
   public class EmailService : IEmailService
   {
     private const string PASSWORD_RESET_TEMPLATE_ID = "d-f2c609fbe43540ea99fa781515b999e7";
-    private static readonly EmailAddress FROM = new EmailAddress("no-reply@slash.gg", "slashgg");
+    private const string VERIFY_EMAIL_TEMPLATE_ID = "d-bb4f14f523ea4ac88903802aca26d9c4";
 
     private readonly ISendGridClient client;
     private readonly IHostingEnvironment hosting;
@@ -29,7 +29,7 @@ namespace Passport.Services
       this.users = users;
     }
 
-    public async Task<ServiceResult> SendPasswordResetEmail(string token, string email)
+    public async Task<ServiceResult> SendPasswordResetEmailAsync(string token, string email)
     {
       var result = new ServiceResult();
 
@@ -50,31 +50,63 @@ namespace Passport.Services
       var encodedToken = HttpUtility.UrlEncode(token);
       var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
       var link = $"{baseUrl}/password-reset?token={encodedToken}&id={user.Id}";
-
-      // Setup the personalization
-      var templateData = new PasswordResetTemplateData
-      {
-        UserName = user.UserName,
-        ResetLink = link
+      var model = new PasswordResetTemplateData {
+        ResetLink = link,
+        UserName = user.UserName
       };
 
-      var personalization = new Personalization
+      var message = new SendGridMessage();
+      message.SetupNoReplyMessage(PASSWORD_RESET_TEMPLATE_ID, email, model);
+
+      var response = await client.SendEmailAsync(message);
+      if (response.StatusCode != System.Net.HttpStatusCode.Accepted)
       {
-        TemplateData = templateData,
-        Tos = new List<EmailAddress>()
+        var raw = await response.Body.ReadAsStringAsync();
+        var data = JsonConvert.DeserializeObject<SendGridError>(raw);
+
+        foreach (var error in data.Errors)
+        {
+          result.Errors.Add(new ServiceResult.Error
+          {
+            Key = error.Field,
+            Message = error.Message
+          });
+        }
+
+        result.Code = 500;
+      }
+
+      return result;
+    }
+
+    public async Task<ServiceResult> SendWelcomeEmailAsync(string token, string email)
+    {
+      var result = new ServiceResult();
+
+      var user = await users.FindByEmailAsync(email);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound
+        });
+        result.Code = 404;
+
+        return result;
+      }
+
+      var encodedToken = HttpUtility.UrlEncode(token);
+      var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
+      var link = $"{baseUrl}/verify-email?token={encodedToken}&id={user.Id}";
+      var model = new VerifyEmailTemplateData
+      {
+        VerifyEmailLink = link,
+        UserName = user.UserName
       };
 
-      personalization.Tos.Add(new EmailAddress(email));
-
-      var message = new SendGridMessage
-      {
-        From = FROM,
-        ReplyTo = FROM,
-        TemplateId = PASSWORD_RESET_TEMPLATE_ID,
-        Personalizations = new List<Personalization>()
-      };
-
-      message.Personalizations.Add(personalization);
+      var message = new SendGridMessage();
+      message.SetupNoReplyMessage(VERIFY_EMAIL_TEMPLATE_ID, email, model);
 
       var response = await client.SendEmailAsync(message);
       if (response.StatusCode != System.Net.HttpStatusCode.Accepted)

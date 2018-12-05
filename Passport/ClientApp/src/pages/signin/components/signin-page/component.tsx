@@ -3,6 +3,7 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
+import { Panel } from 'passport/components/panel';
 import { Layout, LayoutType } from 'passport/features/layout';
 import { Signin } from 'passport/features/signin';
 
@@ -16,9 +17,9 @@ class SigninPageComponent extends React.Component<Props> {
         {params.returnUrl ? (
           <Signin returnUrl={params.returnUrl as string} />
         ) : (
-          <div className="p-4 bg-white shadow rounded">
+          <Panel>
             <Paragraph>Invalid sign in state</Paragraph>
-          </div>
+          </Panel>
         )}
       </Layout>
     );

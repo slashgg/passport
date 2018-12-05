@@ -10,5 +10,7 @@ namespace Passport.Interfaces
     Task<ServiceResult> SigninAsync(string email, string password, string returnUrl, bool rememberMe = false);
     Task<string> GeneratePasswordResetTokenAsync(string email);
     Task<ServiceResult> ResetPasswordAsync(PasswordReset model);
+    Task<string> GenerateEmailVerificationTokenAsync(string emailAddress);
+    Task<ServiceResult> VerifyEmailAsync(VerifyEmail model);
   }
 }

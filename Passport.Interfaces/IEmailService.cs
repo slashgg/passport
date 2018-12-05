@@ -1,10 +1,12 @@
-﻿using Passport.Utility;
+﻿using Passport.DTOs;
+using Passport.Utility;
 using System.Threading.Tasks;
 
 namespace Passport.Interfaces
 {
   public interface IEmailService
   {
-    Task<ServiceResult> SendPasswordResetEmail(string token, string email);
+    Task<ServiceResult> SendPasswordResetEmailAsync(string token, string email);
+    Task<ServiceResult> SendWelcomeEmailAsync(string token, string email);
   }
 }

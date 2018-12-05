@@ -25,7 +25,7 @@ namespace Passport.Areas.v1.Controllers
     public async Task<OperationResult> Index([FromQuery] string email)
     {
       var token = await passportService.GeneratePasswordResetTokenAsync(email);
-      await emailService.SendPasswordResetEmail(token, email);
+      await emailService.SendPasswordResetEmailAsync(token, email);
 
       // We say Ok no matter what. We don't reveal that a user doesn't exist.
       return Ok();
