@@ -65,9 +65,9 @@
     hey-listen "^1.0.5"
     style-value-types "^3.0.7"
 
-"@slashgg/diwali@0.0.4":
-  version "0.0.4"
-  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@slashgg/diwali/-/diwali-0.0.4.tgz#b7d07450c83f489ef28f98f7735a1fd64f50d03b"
+"@slashgg/diwali@0.0.6":
+  version "0.0.6"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@slashgg/diwali/-/diwali-0.0.6.tgz#9ca5cc7b249847f3059ca09867367ed2c49d6e07"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.7"
     "@fortawesome/free-solid-svg-icons" "^5.4.2"

@@ -73,6 +73,16 @@ namespace Passport
 
       services.AddSvalbard();
 
+      services.AddCors(options =>
+      {
+        options.AddDefaultPolicy(policy =>
+        {
+          policy.AllowAnyHeader();
+          policy.AllowAnyMethod();
+          policy.AllowAnyOrigin();
+        });
+      });
+
       services.AddIdentityServer(config =>
       {
         config.Events.RaiseErrorEvents = true;
@@ -107,6 +117,8 @@ namespace Passport
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
+
+      app.UseCors();
 
       app.UseIdentityServer();
 

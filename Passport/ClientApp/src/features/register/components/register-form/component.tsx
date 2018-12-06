@@ -1,7 +1,6 @@
 import { Button, Input, Paragraph } from '@slashgg/diwali';
 import * as React from 'react';
 
-import { Link } from 'passport/components/link';
 import { RegisterModel } from '../../models/register-model';
 import { LegalConsent } from '../legal-consent/component';
 
@@ -58,7 +57,7 @@ class RegisterFormComponent extends React.Component<Props, State> {
           </div>
           <div className="flex flex-col w-full">
             <LegalConsent />
-            <Button className="ml-auto" block>
+            <Button className="ml-auto" block loading={this.props.isSubmitting}>
               Register
             </Button>
           </div>
