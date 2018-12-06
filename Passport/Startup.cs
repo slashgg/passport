@@ -34,7 +34,7 @@ namespace Passport
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
       {
-        var accessor = provider.GetRequiredService<IOptions<SendGridConfig>>();
+        IOptions<SendGridConfig> accessor = provider.GetRequiredService<IOptions<SendGridConfig>>();
         return new SendGridClient(accessor.Value.ApiKey);
       });
 
@@ -58,7 +58,11 @@ namespace Passport
 
       services.AddDbContext<PassportDbContext>(options =>
       {
-        options.UseSqlServer(Configuration.GetConnectionString("PassportDbContext"), builder => builder.MigrationsAssembly("Passport.Models"));
+        options.UseSqlServer(Configuration.GetConnectionString("PassportDbContext"), builder =>
+        {
+          builder.MigrationsAssembly("Passport.Models");
+          builder.MigrationsHistoryTable("__MigrationsPassportHistory", schema: "passport");
+        });
         options.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning));
         options.UseLazyLoadingProxies();
       });

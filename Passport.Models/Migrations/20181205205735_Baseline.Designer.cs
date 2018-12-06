@@ -10,13 +10,14 @@ using Passport.Models.Context;
 namespace Passport.Models.Migrations
 {
     [DbContext(typeof(PassportDbContext))]
-    [Migration("20181130183328_Initial")]
-    partial class Initial
+    [Migration("20181205205735_Baseline")]
+    partial class Baseline
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("passport")
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);

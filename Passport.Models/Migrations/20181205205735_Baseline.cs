@@ -4,12 +4,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Passport.Models.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Baseline : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "passport");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
+                schema: "passport",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -24,6 +28,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
+                schema: "passport",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -49,6 +54,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
+                schema: "passport",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -63,6 +69,7 @@ namespace Passport.Models.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
+                        principalSchema: "passport",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -70,6 +77,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
+                schema: "passport",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -84,6 +92,7 @@ namespace Passport.Models.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
                         column: x => x.UserId,
+                        principalSchema: "passport",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -91,6 +100,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
+                schema: "passport",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(nullable: false),
@@ -104,6 +114,7 @@ namespace Passport.Models.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
+                        principalSchema: "passport",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -111,6 +122,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
+                schema: "passport",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -122,12 +134,14 @@ namespace Passport.Models.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
+                        principalSchema: "passport",
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
+                        principalSchema: "passport",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -135,6 +149,7 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
+                schema: "passport",
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
@@ -148,6 +163,7 @@ namespace Passport.Models.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
+                        principalSchema: "passport",
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -155,11 +171,13 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
+                schema: "passport",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
+                schema: "passport",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
@@ -167,26 +185,31 @@ namespace Passport.Models.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
+                schema: "passport",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
+                schema: "passport",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
+                schema: "passport",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
+                schema: "passport",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
+                schema: "passport",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
@@ -196,25 +219,32 @@ namespace Passport.Models.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
+                name: "AspNetRoleClaims",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
+                name: "AspNetUserClaims",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
+                name: "AspNetUserLogins",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
+                name: "AspNetUserRoles",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
+                name: "AspNetUserTokens",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "AspNetRoles",
+                schema: "passport");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "AspNetUsers",
+                schema: "passport");
         }
     }
 }

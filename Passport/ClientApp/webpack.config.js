@@ -1,4 +1,4 @@
-const { join } = require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -27,7 +27,7 @@ module.exports = function(env, argv) {
       loader: 'sass-loader',
       options: {
         sourceMap: true,
-        includePaths: [join(__dirname, 'styles')],
+        includePaths: [path.join(__dirname, 'styles')],
       },
     },
   ];
@@ -99,12 +99,6 @@ module.exports = function(env, argv) {
   }
 
   if (!isDev) {
-    // const appSrc = glob.sync(join(__dirname, 'src/**/*.tsx'));
-    // plugins.push(
-    //   new PurgecssPlugin({
-    //     paths: [...appSrc],
-    //   })
-    // );
     plugins.push(
       new MiniCssExtractPlugin({
         filename: '[name].[hash].css',
@@ -120,7 +114,7 @@ module.exports = function(env, argv) {
     historyApiFallback: true,
     hot: true,
     port: 3000,
-    contentBase: join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'public'),
   };
 
   const resolve = {
@@ -135,6 +129,7 @@ module.exports = function(env, argv) {
 
   const output = {
     publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
     filename: '[name].[hash].bundle.js',
   };
 
@@ -157,10 +152,10 @@ module.exports = function(env, argv) {
   }
 
   if (!isDev) {
-    // const optimization = {
-    //   minimize: false,
-    // };
-    // config = Object.assign(config, { optimization });
+    const optimization = {
+      minimize: false,
+    };
+    config = Object.assign(config, { optimization });
   }
 
   return config;

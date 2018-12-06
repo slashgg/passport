@@ -23,7 +23,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Repositories", "Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.DTOs", "Passport.DTOs\Passport.DTOs.csproj", "{9012E648-9641-4F14-97B1-1F3F02852E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Passport.Utility", "Passport.Utility\Passport.Utility.csproj", "{47040096-FA56-41E0-86D9-3583BED8F9C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Passport.Utility", "Passport.Utility\Passport.Utility.csproj", "{47040096-FA56-41E0-86D9-3583BED8F9C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6DA43E1-61C4-4E11-8027-C668CECAA14C}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

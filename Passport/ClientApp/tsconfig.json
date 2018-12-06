@@ -26,13 +26,17 @@
   "exclude": [
     "node_modules",
     "dist",
+    "build",
     "public",
     "webpack.config.js",
     "scripts",
     "acceptance-tests",
     "postcss.config.js",
     "webpack",
+    ".gitignore",
     "jest",
-    "src/setupTests.ts"
+    ".vscode",
+    "src/setupTests.ts",
+    "webpack.config.js"
   ]
 }
