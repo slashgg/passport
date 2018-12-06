@@ -20,6 +20,7 @@ FROM node:8 AS node-build
 WORKDIR /src
 COPY ["Passport/ClientApp/", "ClientApp/"]
 WORKDIR "/src/ClientApp"
+RUN yarn
 RUN yarn build
 
 FROM build AS publish

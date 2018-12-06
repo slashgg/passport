@@ -5,6 +5,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const WebPackBar = require('webpackbar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function(env, argv) {
   const isDev = argv['mode'] === 'development';
@@ -92,6 +93,11 @@ module.exports = function(env, argv) {
       tslint: true,
       async: true,
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'public',
+      },
+    ]),
   ];
 
   if (isDev) {

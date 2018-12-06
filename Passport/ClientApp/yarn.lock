@@ -707,6 +707,24 @@ bytes@3.0.0:
   version "3.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
 
+cacache@^10.0.4:
+  version "10.0.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cacache/-/cacache-10.0.4.tgz#6452367999eff9d4188aefd9a14e9d7c6a263460"
+  dependencies:
+    bluebird "^3.5.1"
+    chownr "^1.0.1"
+    glob "^7.1.2"
+    graceful-fs "^4.1.11"
+    lru-cache "^4.1.1"
+    mississippi "^2.0.0"
+    mkdirp "^0.5.1"
+    move-concurrently "^1.0.1"
+    promise-inflight "^1.0.1"
+    rimraf "^2.6.2"
+    ssri "^5.2.4"
+    unique-filename "^1.1.0"
+    y18n "^4.0.0"
+
 cacache@^11.0.2:
   version "11.3.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cacache/-/cacache-11.3.1.tgz#d09d25f6c4aca7a6d305d141ae332613aa1d515f"
@@ -1016,6 +1034,19 @@ copy-concurrently@^1.0.0:
 copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
+
+copy-webpack-plugin@^4.6.0:
+  version "4.6.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/copy-webpack-plugin/-/copy-webpack-plugin-4.6.0.tgz#e7f40dd8a68477d405dd1b7a854aae324b158bae"
+  dependencies:
+    cacache "^10.0.4"
+    find-cache-dir "^1.0.0"
+    globby "^7.1.1"
+    is-glob "^4.0.0"
+    loader-utils "^1.1.0"
+    minimatch "^3.0.4"
+    p-limit "^1.0.0"
+    serialize-javascript "^1.4.0"
 
 core-js@^2.4.0:
   version "2.5.7"
@@ -1731,6 +1762,14 @@ finalhandler@1.1.1:
     statuses "~1.4.0"
     unpipe "~1.0.0"
 
+find-cache-dir@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/find-cache-dir/-/find-cache-dir-1.0.0.tgz#9288e3e9e3cc3748717d39eade17cf71fc30ee6f"
+  dependencies:
+    commondir "^1.0.1"
+    make-dir "^1.0.0"
+    pkg-dir "^2.0.0"
+
 find-cache-dir@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/find-cache-dir/-/find-cache-dir-2.0.0.tgz#4c1faed59f45184530fb9d7fa123a4d04a98472d"
@@ -1950,6 +1989,17 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+globby@^7.1.1:
+  version "7.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/globby/-/globby-7.1.1.tgz#fb2ccff9401f8600945dfada97440cca972b8680"
+  dependencies:
+    array-union "^1.0.1"
+    dir-glob "^2.0.0"
+    glob "^7.1.2"
+    ignore "^3.3.5"
+    pify "^3.0.0"
+    slash "^1.0.0"
 
 globby@^8.0.1:
   version "8.0.1"
@@ -2730,6 +2780,13 @@ lru-cache@^4.0.1, lru-cache@^4.1.3:
     pseudomap "^1.0.2"
     yallist "^3.0.2"
 
+lru-cache@^4.1.1:
+  version "4.1.5"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
+  dependencies:
+    pseudomap "^1.0.2"
+    yallist "^2.1.2"
+
 luxon@^1.6.2:
   version "1.8.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/luxon/-/luxon-1.8.1.tgz#abc37c3561c93fc086a7b315d00862026b38b1f4"
@@ -2909,6 +2966,21 @@ minizlib@^1.1.1:
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/minizlib/-/minizlib-1.1.1.tgz#6734acc045a46e61d596a43bb9d9cd326e19cc42"
   dependencies:
     minipass "^2.2.1"
+
+mississippi@^2.0.0:
+  version "2.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/mississippi/-/mississippi-2.0.0.tgz#3442a508fafc28500486feea99409676e4ee5a6f"
+  dependencies:
+    concat-stream "^1.5.0"
+    duplexify "^3.4.2"
+    end-of-stream "^1.1.0"
+    flush-write-stream "^1.0.0"
+    from2 "^2.1.0"
+    parallel-transform "^1.1.0"
+    pump "^2.0.1"
+    pumpify "^1.3.3"
+    stream-each "^1.1.0"
+    through2 "^2.0.0"
 
 mississippi@^3.0.0:
   version "3.0.0"
@@ -3311,7 +3383,7 @@ p-is-promise@^1.1.0:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/p-is-promise/-/p-is-promise-1.1.0.tgz#9c9456989e9f6588017b0434d56097675c3da05e"
 
-p-limit@^1.1.0:
+p-limit@^1.0.0, p-limit@^1.1.0:
   version "1.3.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/p-limit/-/p-limit-1.3.0.tgz#b86bd5f0c25690911c7590fcbfc2010d54b3ccb8"
   dependencies:
@@ -3485,6 +3557,12 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+pkg-dir@^2.0.0:
+  version "2.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
+  dependencies:
+    find-up "^2.1.0"
 
 pkg-dir@^3.0.0:
   version "3.0.0"
@@ -3685,7 +3763,7 @@ public-encrypt@^4.0.0:
     randombytes "^2.0.1"
     safe-buffer "^5.1.2"
 
-pump@^2.0.0:
+pump@^2.0.0, pump@^2.0.1:
   version "2.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
   dependencies:
@@ -4453,6 +4531,12 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+ssri@^5.2.4:
+  version "5.3.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ssri/-/ssri-5.3.0.tgz#ba3872c9c6d33a0704a7d71ff045e5ec48999d06"
+  dependencies:
+    safe-buffer "^5.1.1"
+
 ssri@^6.0.0:
   version "6.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
@@ -5184,6 +5268,10 @@ y18n@^3.2.1:
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
+
+yallist@^2.1.2:
+  version "2.1.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
 yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.3"
