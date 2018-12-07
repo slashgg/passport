@@ -6,6 +6,7 @@ const { HotModuleReplacementPlugin } = require('webpack');
 const WebPackBar = require('webpackbar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function(env, argv) {
   const isDev = argv['mode'] === 'development';
@@ -139,11 +140,8 @@ module.exports = function(env, argv) {
     filename: '[name].[hash].bundle.js',
   };
 
-  const devtool = isDev ? 'inline-source-map' : 'source-map';
-
   let config = {
     mode: argv['mode'],
-    devtool,
     entry,
     module: {
       rules,
@@ -154,12 +152,21 @@ module.exports = function(env, argv) {
   };
 
   if (isDev) {
-    config = Object.assign(config, { devServer });
+    config = Object.assign(config, { devServer, devTool: 'inline-source-map' });
   }
 
   if (!isDev) {
     const optimization = {
-      minimize: false,
+      minimizer: [
+        new TerserWebpackPlugin({
+          sourceMap: false,
+          terserOptions: {
+            output: {
+              comments: false,
+            },
+          },
+        }),
+      ],
     };
     config = Object.assign(config, { optimization });
   }
