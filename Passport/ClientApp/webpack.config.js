@@ -120,7 +120,7 @@ module.exports = function(env, argv) {
   const devServer = {
     historyApiFallback: true,
     hot: true,
-    port: 3000,
+    port: 3001,
     contentBase: path.join(__dirname, 'public'),
   };
 
@@ -140,9 +140,12 @@ module.exports = function(env, argv) {
     filename: '[name].[hash].bundle.js',
   };
 
+  const devtool = isDev ? 'inline-source-map' : 'source-map';
+
   let config = {
     mode: argv['mode'],
     entry,
+    devtool,
     module: {
       rules,
     },
@@ -152,7 +155,7 @@ module.exports = function(env, argv) {
   };
 
   if (isDev) {
-    config = Object.assign(config, { devServer, devTool: 'inline-source-map' });
+    config = Object.assign(config, { devServer });
   }
 
   if (!isDev) {
