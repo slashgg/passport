@@ -7,7 +7,7 @@ namespace Passport.Services.Extensions
   {
     public static void SetupNoReplyMessage<T>(this SendGridMessage message, string templateId, string to, T model)
     {
-      var from = new EmailAddress("no-reply@slash.gg", "slashgg");
+      var from = new EmailAddress("no-reply@e.slash.gg", "slashgg");
       var personalization = new Personalization
       {
         TemplateData = model,
