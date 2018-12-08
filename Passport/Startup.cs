@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -46,6 +47,14 @@ namespace Passport
         options.User.RequireUniqueEmail = true;
         options.Password.RequireNonAlphanumeric = false;
         options.SignIn.RequireConfirmedEmail = false;
+      });
+      services.Configure<ForwardedHeadersOptions>(options =>
+      {
+        options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        options.RequireHeaderSymmetry = false;
+
+        options.KnownNetworks.Clear();
+        options.KnownProxies.Clear();
       });
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -104,6 +113,8 @@ namespace Passport
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
+      app.UseForwardedHeaders();
+
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
