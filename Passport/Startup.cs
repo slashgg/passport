@@ -106,7 +106,7 @@ namespace Passport
         .AddInMemoryPersistedGrants()
         .AddInMemoryIdentityResources(InMemoryIdentityResources.IdentityResources)
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
-        .AddInMemoryClients(Configuration.GetSection("Identity:Clients"))
+        .AddInMemoryClients(InMemoryClients.Clients)
         .AddAspNetIdentity<PassportUser>();
     }
 

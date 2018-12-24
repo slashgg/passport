@@ -26,13 +26,13 @@ namespace Passport.Areas.v1.Controllers
         return BadRequest();
       }
 
-      var result = await passport.SigninAsync(model.Email, model.Password, model.ReturnUrl, model.RememberMe);
+      Utility.ServiceResult result = await passport.SigninAsync(model.Email, model.Password, model.ReturnUrl, model.RememberMe);
       if (result.Successful)
       {
         return Ok();
       }
 
-      foreach (var error in result.Errors)
+      foreach (Utility.ServiceResult.Error error in result.Errors)
       {
         ModelState.AddModelError(error.Key, error.Message);
       }

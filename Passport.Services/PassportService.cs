@@ -31,13 +31,13 @@ namespace Passport.Services
 
     public async Task<string> GenerateEmailVerificationTokenAsync(string emailAddress)
     {
-      var user = await userManager.FindByEmailAsync(emailAddress);
+      PassportUser user = await userManager.FindByEmailAsync(emailAddress);
       return await userManager.GenerateEmailConfirmationTokenAsync(user);
     }
 
     public async Task<string> GeneratePasswordResetTokenAsync(string email)
     {
-      var user = await userManager.FindByEmailAsync(email);
+      PassportUser user = await userManager.FindByEmailAsync(email);
       return await userManager.GeneratePasswordResetTokenAsync(user);
     }
 
@@ -96,9 +96,9 @@ namespace Passport.Services
 
     public async Task<ServiceResult> ResetPasswordAsync(PasswordReset model)
     {
-      var result = new ServiceResult();
+      ServiceResult result = new ServiceResult();
 
-      var user = await userManager.FindByIdAsync(model.UserId);
+      PassportUser user = await userManager.FindByIdAsync(model.UserId);
       if (user == null)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -111,10 +111,10 @@ namespace Passport.Services
         return result;
       }
 
-      var identityResult = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
+      IdentityResult identityResult = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
       if (!identityResult.Succeeded)
       {
-        foreach (var error in identityResult.Errors)
+        foreach (IdentityError error in identityResult.Errors)
         {
           result.Errors.Add(new ServiceResult.Error
           {
@@ -130,7 +130,7 @@ namespace Passport.Services
 
     public async Task<ServiceResult> SigninAsync(string email, string password, string returnUrl, bool rememberMe)
     {
-      var result = new ServiceResult();
+      ServiceResult result = new ServiceResult();
       if (!await ValidateReturnUrlAsync(returnUrl))
       {
         result.Errors.Add(new ServiceResult.Error
@@ -143,7 +143,7 @@ namespace Passport.Services
         return result;
       }
 
-      var user = await userManager.FindByEmailAsync(email);
+      PassportUser user = await userManager.FindByEmailAsync(email);
       if (user == null)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -156,7 +156,7 @@ namespace Passport.Services
         return result;
       }
 
-      var identityResult = await signInManager.PasswordSignInAsync(user, password, rememberMe, lockoutOnFailure: false);
+      SignInResult identityResult = await signInManager.PasswordSignInAsync(user, password, rememberMe, lockoutOnFailure: false);
       if (!identityResult.Succeeded)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -176,9 +176,9 @@ namespace Passport.Services
 
     public async Task<ServiceResult> VerifyEmailAsync(VerifyEmail model)
     {
-      var result = new ServiceResult();
+      ServiceResult result = new ServiceResult();
 
-      var user = await userManager.FindByIdAsync(model.UserId);
+      PassportUser user = await userManager.FindByIdAsync(model.UserId);
       if (user == null)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -191,7 +191,7 @@ namespace Passport.Services
         return result;
       }
 
-      var identityResult = await userManager.ConfirmEmailAsync(user, model.Token);
+      IdentityResult identityResult = await userManager.ConfirmEmailAsync(user, model.Token);
       if (!identityResult.Succeeded)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -207,7 +207,7 @@ namespace Passport.Services
 
     private async Task<bool> ValidateReturnUrlAsync(string returnUrl)
     {
-      var context = await interaction.GetAuthorizationContextAsync(returnUrl);
+      IdentityServer4.Models.AuthorizationRequest context = await interaction.GetAuthorizationContextAsync(returnUrl);
       return context != null && interaction.IsValidReturnUrl(returnUrl);
     }
   }
