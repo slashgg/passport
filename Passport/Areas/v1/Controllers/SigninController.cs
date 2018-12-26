@@ -39,5 +39,27 @@ namespace Passport.Areas.v1.Controllers
 
       return BadRequest();
     }
+
+    [HttpDelete]
+    public async Task<OperationResult<Signout>> Index([FromQuery] string logoutId)
+    {
+      Utility.ServiceResult<string> result = await passport.SignoutAsync(logoutId);
+      if (result.Successful)
+      {
+        Signout signout = new Signout
+        {
+          PostLogoutRedirectUri = result.Data
+        };
+
+        return new OperationResult<Signout>(signout);
+      }
+
+      foreach (Utility.ServiceResult.Error error in result.Errors)
+      {
+        ModelState.AddModelError(error.Key, error.Message);
+      }
+
+      return BadRequest();
+    }
   }
 }

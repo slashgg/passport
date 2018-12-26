@@ -174,6 +174,43 @@ namespace Passport.Services
       return result;
     }
 
+    public async Task<ServiceResult<string>> SignoutAsync(string logoutId)
+    {
+      ServiceResult<string> result = new ServiceResult<string>();
+
+      IdentityServer4.Models.LogoutRequest context = await interaction.GetLogoutContextAsync(logoutId);
+      if (context == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.InvalidSignoutId),
+          Message = Errors.InvalidSignoutId,
+        });
+        result.Code = 400;
+
+        return result;
+      }
+
+      PassportUser user = await userManager.FindByIdAsync(context.SubjectId);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound
+        });
+        result.Code = 400;
+
+        return result;
+      }
+
+      await signInManager.SignOutAsync();
+
+      result.Data = context.PostLogoutRedirectUri;
+
+      return result;
+    }
+
     public async Task<ServiceResult> VerifyEmailAsync(VerifyEmail model)
     {
       ServiceResult result = new ServiceResult();

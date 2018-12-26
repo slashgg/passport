@@ -88,6 +88,15 @@ namespace Passport.Utility {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid sign out id..
+        /// </summary>
+        public static string InvalidSignoutId {
+            get {
+                return ResourceManager.GetString("InvalidSignoutId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User is not found..
         /// </summary>
         public static string UserNotFound {

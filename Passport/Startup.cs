@@ -100,6 +100,7 @@ namespace Passport
         config.Events.RaiseFailureEvents = true;
         config.UserInteraction.ErrorUrl = "/error";
         config.UserInteraction.LoginUrl = "/signin";
+        config.UserInteraction.LogoutUrl = "/signout";
         config.UserInteraction.LoginReturnUrlParameter = "returnUrl";
       })
         .AddDeveloperSigningCredential()

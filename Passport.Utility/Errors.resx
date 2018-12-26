@@ -126,6 +126,9 @@
   <data name="InvalidSignin" xml:space="preserve">
     <value>Invalid email address or password.</value>
   </data>
+  <data name="InvalidSignoutId" xml:space="preserve">
+    <value>Invalid sign out id.</value>
+  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>User is not found.</value>
   </data>
