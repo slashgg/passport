@@ -40,6 +40,7 @@ namespace Passport
         RedirectUris = new HashSet<string>
         {
           "http://localhost:3000/signin-callback",
+          "http://staging.slash.gg.s3-website-us-east-1.amazonaws.com/signin-callback",
           "https://slash.gg/signin-callback"
         },
         RequireConsent = false,
@@ -52,11 +53,13 @@ namespace Passport
         AllowedCorsOrigins = new HashSet<string>
         {
           "https://slash.gg",
+          "http://staging.slash.gg.s3-website-us-east-1.amazonaws.com/",
           "http://localhost:3000",
         },
         PostLogoutRedirectUris = new HashSet<string>
         {
           "https://slash.gg",
+          "http://staging.slash.gg.s3-website-us-east-1.amazonaws.com/",
           "http://localhost:3000",
         }
       },
