@@ -1,15 +1,15 @@
 import { Paragraph } from '@slashgg/diwali';
 import * as React from 'react';
 
+import { withData, WithDataOptionsMapper, WithDataProps } from '@slashgg/singapore';
 import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
 import { ForgotPasswordForm } from '../forgot-password-form';
 
 export interface State {
   isSuccessful: boolean;
 }
 
-type Props = WithDataProps;
+type Props = WithDataProps<{}>;
 
 class ForgotPasswordComponent extends React.Component<Props, State> {
   public state: State = {
@@ -36,10 +36,10 @@ class ForgotPasswordComponent extends React.Component<Props, State> {
   };
 
   private handleFormSubmit = (email: string) => {
-    this.props.invoke({ email }).then((success: boolean) => {
+    this.props.invoke({ email }).then(() => {
       if (!this.isUnmounted) {
         this.setState({
-          isSuccessful: success,
+          isSuccessful: true,
         });
       }
     });
@@ -51,4 +51,4 @@ const withDataMapper: WithDataOptionsMapper<{}> = () => ({
   path: '/api/v1/password',
 });
 
-export const ForgotPassword: React.ComponentClass = withData(ForgotPasswordComponent, withDataMapper);
+export const ForgotPassword: React.ComponentClass = withData(withDataMapper)(ForgotPasswordComponent);

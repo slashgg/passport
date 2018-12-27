@@ -1,9 +1,7 @@
+import { withData, WithDataOptionsMapper, WithDataProps } from '@slashgg/singapore';
+import { Panel } from 'passport/components/panel';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-
-import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
-import { passport } from 'passport/core/passport';
 import { PasswordSignin } from '../../models/password-signin';
 import { SignInForm } from '../signin-form';
 
@@ -11,7 +9,7 @@ export interface PublicProps {
   returnUrl: string;
 }
 
-type Props = PublicProps & WithDataProps;
+type Props = PublicProps & WithDataProps<{}>;
 
 class SigninComponent extends React.Component<Props> {
   public render() {
@@ -37,11 +35,9 @@ class SigninComponent extends React.Component<Props> {
   }
 
   private handleSubmit = (model: PasswordSignin) => {
-    this.props.invoke({ returnUrl: this.props.returnUrl, ...model }).then((success: boolean) => {
-      if (success) {
-        // We have to invoke a full page reload so the server picks this up.
-        window.location.href = this.props.returnUrl;
-      }
+    this.props.invoke({ returnUrl: this.props.returnUrl, ...model }).then(() => {
+      // We have to invoke a full page reload so the server picks this up.
+      window.location.href = this.props.returnUrl;
     });
   };
 }
@@ -51,4 +47,4 @@ const propsToDataOptions: WithDataOptionsMapper<PublicProps> = props => ({
   path: '/api/v1/signin',
 });
 
-export const Signin: React.ComponentClass<PublicProps> = withData(SigninComponent, propsToDataOptions);
+export const Signin: React.ComponentClass<PublicProps> = withData(propsToDataOptions)(SigninComponent);

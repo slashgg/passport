@@ -1,8 +1,7 @@
 import { Paragraph } from '@slashgg/diwali';
-import * as React from 'react';
-
+import { withData, WithDataOptionsMapper, WithDataProps } from '@slashgg/singapore';
 import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
+import * as React from 'react';
 import { VerifyEmailModel } from '../../models/verify-email-model';
 
 export interface PublicProps {
@@ -14,7 +13,7 @@ export interface State {
   resetSuccess: boolean;
 }
 
-type Props = PublicProps & WithDataProps;
+type Props = PublicProps & WithDataProps<{}>;
 
 class VerifyEmailComponent extends React.Component<Props, State> {
   public state: State = {
@@ -29,10 +28,10 @@ class VerifyEmailComponent extends React.Component<Props, State> {
       userId: this.props.userId,
     };
 
-    this.props.invoke(dto).then((success: boolean) => {
+    this.props.invoke(dto).then(() => {
       if (!this.isUnmounted) {
         this.setState({
-          resetSuccess: success,
+          resetSuccess: true,
         });
       }
     });
@@ -62,4 +61,4 @@ const withDataMapper: WithDataOptionsMapper<PublicProps> = props => ({
   path: '/api/v1/register',
 });
 
-export const VerifyEmail: React.ComponentClass<PublicProps> = withData(VerifyEmailComponent, withDataMapper);
+export const VerifyEmail: React.ComponentClass<PublicProps> = withData(withDataMapper)(VerifyEmailComponent);

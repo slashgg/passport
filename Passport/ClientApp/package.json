@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "@slashgg/diwali": "0.0.6",
+    "@slashgg/singapore": "0.4.5",
     "classnames": "^2.2.6",
     "history": "^4.7.2",
     "query-string": "^6.2.0",
@@ -20,7 +21,7 @@
   "scripts": {
     "clean": "rimraf ./build",
     "start": "rimraf ./build && cross-env webpack-dev-server --mode development",
-    "build": "yarn && rimraf ./build && cross-env webpack --mode production --display-error-details"
+    "build": "yarn && rimraf ./build && cross-env webpack --mode production"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
@@ -54,6 +55,7 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.6",
+    "typings": "^2.1.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",

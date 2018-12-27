@@ -51,7 +51,7 @@ namespace Passport.Areas.v1.Controllers
           PostLogoutRedirectUri = result.Data
         };
 
-        return new OperationResult<Signout>(signout);
+        return signout;
       }
 
       foreach (Utility.ServiceResult.Error error in result.Errors)

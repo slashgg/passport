@@ -8,7 +8,7 @@ type Props = RouteComponentProps;
 
 class SignoutPageComponent extends React.Component<Props> {
   public render() {
-    const params = parse(this.props.location.search);
+    const params = parse(this.props.location.search, '?');
     return (
       <Layout type={LayoutType.FullScreen}>
         <Signout logoutId={params.logoutId as string} />

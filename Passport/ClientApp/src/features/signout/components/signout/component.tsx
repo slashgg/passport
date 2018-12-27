@@ -1,6 +1,6 @@
 import { Paragraph } from '@slashgg/diwali';
+import { OperationError, withData, WithDataOptionsMapper, WithDataProps } from '@slashgg/singapore';
 import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
 import { SignoutResponse } from 'passport/features/signout/api/signout';
 import * as React from 'react';
 
@@ -8,15 +8,12 @@ export interface PublicProps {
   logoutId: string;
 }
 
-type Props = PublicProps & WithDataProps;
+type Props = PublicProps & WithDataProps<SignoutResponse>;
 
 class SignoutComponent extends React.Component<Props> {
   public componentDidMount() {
     this.props.invoke().then(response => {
-      if (response) {
-        const signout = response as SignoutResponse;
-        window.location.href = signout.postLogoutRedirectUri;
-      }
+      window.location.href = response.postLogoutRedirectUri;
     });
   }
 
@@ -34,7 +31,7 @@ class SignoutComponent extends React.Component<Props> {
 
 const mapper: WithDataOptionsMapper<PublicProps> = props => ({
   method: 'delete',
-  path: '/api/v1/signout?logoutId=' + props.logoutId,
+  path: '/api/v1/signin?logoutId=' + props.logoutId,
 });
 
-export const Signout: React.ComponentClass<PublicProps> = withData(SignoutComponent, mapper);
+export const Signout: React.ComponentClass<PublicProps> = withData(mapper)(SignoutComponent);

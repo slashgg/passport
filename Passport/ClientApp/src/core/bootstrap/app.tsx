@@ -1,71 +1,72 @@
 import * as React from 'react';
 import { Router } from 'react-router';
 
-import { RootRouter } from 'passport/routes/root';
-import { passport } from '../passport';
 import {
   AlertHandler,
-  LoginHandler,
-  LogoutHandler,
+  Notification,
   NotifyHandler,
-  PassportActions,
-  PassportContext,
-  PassportContextType,
-  PassportState,
-} from '../passport-context';
+  ToasterActions,
+  ToasterContext,
+  ToasterContextType,
+  ToasterState,
+} from '@slashgg/singapore';
+import { RootRouter } from 'passport/routes/root';
+import { passport } from '../passport';
 
-class App extends React.Component<{}, PassportState> implements PassportActions {
-  public state: PassportState = {
-    user: undefined,
+type State = ToasterState;
+
+class App extends React.Component<{}, State> implements ToasterActions {
+  public state: State = {
+    errors: [],
+    messages: [],
   };
 
   public render() {
-    const contextValue: PassportContextType = {
+    const contextValue: ToasterContextType = {
       alert: this.alert,
       clear: this.clear,
-      login: this.login,
-      logout: this.logout,
       notify: this.notify,
       ...this.state,
     };
 
     return (
-      <PassportContext.Provider value={contextValue}>
+      <ToasterContext.Provider value={contextValue}>
         <Router history={passport.history}>
           <RootRouter />
         </Router>
-      </PassportContext.Provider>
+      </ToasterContext.Provider>
     );
   }
 
-  public login: LoginHandler = user => {
-    this.setState({
-      user,
-    });
-  };
-
-  public logout: LogoutHandler = () => {
-    this.setState({
-      user: undefined,
-    });
-  };
-
   public alert: AlertHandler = error => {
-    this.setState({
-      error,
+    this.setState(prev => {
+      const errors = prev.errors.concat(error);
+      return { errors };
     });
   };
 
   public notify: NotifyHandler = notification => {
-    this.setState({
-      notification,
+    this.setState(prev => {
+      const message: Notification = {
+        action: () => Promise.resolve(),
+        message: notification,
+      };
+      const messages = prev.messages.concat(message);
+
+      return { messages };
     });
   };
 
   public clear = (type: 'error' | 'notification') => {
-    this.setState({
-      [type]: undefined,
-    });
+    if (type === 'error') {
+      this.setState({
+        errors: [],
+      });
+    } else {
+      this.setState({
+        messages: [],
+      });
+    }
   };
 }
 

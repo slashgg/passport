@@ -1,8 +1,7 @@
 import { Paragraph } from '@slashgg/diwali';
-import * as React from 'react';
-
+import { withData, WithDataOptionsMapper, WithDataProps } from '@slashgg/singapore';
 import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
+import * as React from 'react';
 import { PasswordResetModel } from '../../models/password-reset-model';
 import { ResetPasswordForm } from '../password-reset-form';
 
@@ -15,7 +14,7 @@ export interface State {
   resetSuccess: boolean;
 }
 
-type Props = PublicProps & WithDataProps;
+type Props = PublicProps & WithDataProps<{}>;
 
 class PasswordResetComponent extends React.Component<Props, State> {
   public state: State = {
@@ -51,7 +50,7 @@ class PasswordResetComponent extends React.Component<Props, State> {
     this.props.invoke(dto).then((success: boolean) => {
       if (!this.isUnmounted) {
         this.setState({
-          resetSuccess: success,
+          resetSuccess: true,
         });
       }
     });
@@ -63,4 +62,4 @@ const withDataMapper: WithDataOptionsMapper<PublicProps> = props => ({
   path: '/api/v1/password',
 });
 
-export const PasswordReset: React.ComponentClass<PublicProps> = withData(PasswordResetComponent, withDataMapper);
+export const PasswordReset: React.ComponentClass<PublicProps> = withData(withDataMapper)(PasswordResetComponent);

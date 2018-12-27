@@ -1,9 +1,8 @@
 import { ButtonType, IconButton, Paragraph } from '@slashgg/diwali';
+import { FieldError, OperationError } from '@slashgg/singapore';
 import classNames from 'classnames';
 import * as React from 'react';
 import posed from 'react-pose';
-
-import { FieldError, OperationError } from '../../models/operation-error';
 
 export interface PublicProps {
   error: OperationError;

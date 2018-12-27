@@ -83,6 +83,17 @@
     react-router "^4.3.1"
     react-router-dom "^4.3.1"
 
+"@slashgg/singapore@0.4.5":
+  version "0.4.5"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@slashgg/singapore/-/singapore-0.4.5.tgz#95e90d7ae244f657b4f4399d9a89da4db59c3002"
+  dependencies:
+    history "^4.7.2"
+    lodash.flowright "^3.5.0"
+    oidc-client "^1.6.1"
+    query-string "^6.2.0"
+    react "^16.6.3"
+    react-router-dom "^4.3.1"
+
 "@types/classnames@^2.2.6":
   version "2.2.6"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@types/classnames/-/classnames-2.2.6.tgz#dbe8a666156d556ed018e15a4c65f08937c3f628"
@@ -297,6 +308,13 @@ acorn@^5.0.0, acorn@^5.6.2:
   version "5.7.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
 
+agent-base@2:
+  version "2.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/agent-base/-/agent-base-2.1.1.tgz#d6de10d5af6132d5bd692427d46fc538539094c7"
+  dependencies:
+    extend "~3.0.0"
+    semver "~5.0.1"
+
 ajv-errors@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ajv-errors/-/ajv-errors-1.0.0.tgz#ecf021fa108fd17dfb5e6b383f2dd233e31ffc59"
@@ -318,9 +336,19 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+ansi-align@^2.0.0:
+  version "2.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
+  dependencies:
+    string-width "^2.0.0"
+
 ansi-colors@^3.0.0:
   version "3.2.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ansi-colors/-/ansi-colors-3.2.1.tgz#9638047e4213f3428a11944a7d4b31cba0a3ff95"
+
+ansi-escapes@^1.0.0:
+  version "1.4.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
 
 ansi-escapes@^3.1.0:
   version "3.1.0"
@@ -348,6 +376,10 @@ ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
+any-promise@^1.0.0, any-promise@^1.1.0, any-promise@^1.3.0:
+  version "1.3.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
+
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/anymatch/-/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
@@ -358,6 +390,10 @@ anymatch@^2.0.0:
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
+
+archy@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/archy/-/archy-1.0.0.tgz#f9c8c13757cc1dd7bc379ac77b2c62a5c2868c40"
 
 are-we-there-yet@~1.1.2:
   version "1.1.5"
@@ -402,7 +438,7 @@ array-union@^1.0.1:
   dependencies:
     array-uniq "^1.0.1"
 
-array-uniq@^1.0.1:
+array-uniq@^1.0.1, array-uniq@^1.0.2:
   version "1.0.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
 
@@ -499,7 +535,15 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-runtime@^6.11.6:
+babel-polyfill@>=6.9.1:
+  version "6.26.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
+
+babel-runtime@^6.11.6, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -550,7 +594,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.5.1:
+bluebird@^3.1.1, bluebird@^3.5.1:
   version "3.5.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
 
@@ -587,6 +631,18 @@ bonjour@^3.5.0:
 boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
+
+boxen@^1.2.1:
+  version "1.3.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
+  dependencies:
+    ansi-align "^2.0.0"
+    camelcase "^4.0.0"
+    chalk "^2.0.1"
+    cli-boxes "^1.0.0"
+    string-width "^2.0.0"
+    term-size "^1.2.0"
+    widest-line "^2.0.0"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -784,7 +840,7 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
-camelcase@^4.1.0:
+camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
@@ -796,11 +852,15 @@ caniuse-lite@^1.0.30000898, caniuse-lite@^1.0.30000899:
   version "1.0.30000912"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/caniuse-lite/-/caniuse-lite-1.0.30000912.tgz#08e650d4090a9c0ab06bfd2b46b7d3ad6dcaea28"
 
+capture-stack-trace@^1.0.0:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
-chalk@^1.1.1, chalk@^1.1.3:
+chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   dependencies:
@@ -810,7 +870,7 @@ chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
+chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.0, chalk@^2.4.1:
   version "2.4.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   dependencies:
@@ -847,7 +907,7 @@ chrome-trace-event@^1.0.0:
   dependencies:
     tslib "^1.9.0"
 
-ci-info@^1.6.0:
+ci-info@^1.5.0, ci-info@^1.6.0:
   version "1.6.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ci-info/-/ci-info-1.6.0.tgz#2ca20dbb9ceb32d4524a683303313f0304b1e497"
 
@@ -877,6 +937,23 @@ clean-css@4.2.x:
   dependencies:
     source-map "~0.6.0"
 
+cli-boxes@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
+
+cli-cursor@^1.0.2:
+  version "1.0.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
+  dependencies:
+    restore-cursor "^1.0.1"
+
+cli-truncate@^1.0.0:
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cli-truncate/-/cli-truncate-1.1.0.tgz#2b2dfd83c53cfd3572b87fc4d430a808afb04086"
+  dependencies:
+    slice-ansi "^1.0.0"
+    string-width "^2.0.0"
+
 cliui@^3.2.0:
   version "3.2.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/cliui/-/cliui-3.2.0.tgz#120601537a916d29940f934da3b48d585a39213d"
@@ -902,6 +979,10 @@ clone-deep@^2.0.1:
     kind-of "^6.0.0"
     shallow-clone "^1.0.0"
 
+clone@^1.0.2:
+  version "1.0.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
@@ -922,6 +1003,13 @@ color-convert@^1.9.0:
 color-name@1.1.3:
   version "1.1.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
+
+columnify@^1.5.2:
+  version "1.5.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/columnify/-/columnify-1.5.4.tgz#4737ddf1c7b69a8a7c340570782e947eec8e78bb"
+  dependencies:
+    strip-ansi "^3.0.0"
+    wcwidth "^1.0.0"
 
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.7"
@@ -967,7 +1055,7 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concat-stream@^1.5.0:
+concat-stream@^1.4.7, concat-stream@^1.5.0:
   version "1.6.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
   dependencies:
@@ -975,6 +1063,17 @@ concat-stream@^1.5.0:
     inherits "^2.0.3"
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
+
+configstore@^3.0.0:
+  version "3.1.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/configstore/-/configstore-3.1.2.tgz#c6f25defaeef26df12dd33414b001fe81a543f8f"
+  dependencies:
+    dot-prop "^4.1.0"
+    graceful-fs "^4.1.2"
+    make-dir "^1.0.0"
+    unique-string "^1.0.0"
+    write-file-atomic "^2.0.0"
+    xdg-basedir "^3.0.0"
 
 connect-history-api-fallback@^1.3.0:
   version "1.5.0"
@@ -1052,6 +1151,10 @@ core-js@^2.4.0:
   version "2.5.7"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
+core-js@^2.5.0:
+  version "2.6.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/core-js/-/core-js-2.6.1.tgz#87416ae817de957a3f249b3b5ca475d4aaed6042"
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -1071,6 +1174,12 @@ create-ecdh@^4.0.0:
   dependencies:
     bn.js "^4.1.0"
     elliptic "^6.0.0"
+
+create-error-class@^3.0.0:
+  version "3.0.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
+  dependencies:
+    capture-stack-trace "^1.0.0"
 
 create-hash@^1.1.0, create-hash@^1.1.2:
   version "1.2.0"
@@ -1140,6 +1249,10 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+crypto-random-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
 css-loader@^1.0.1:
   version "1.0.1"
@@ -1215,7 +1328,7 @@ dayjs@^1.7.7:
   version "1.7.7"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/dayjs/-/dayjs-1.7.7.tgz#8df20f78ac2476e3f5348ef49f8f22ebc3016370"
 
-debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
+debug@2, debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   version "2.6.9"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1265,6 +1378,12 @@ default-gateway@^2.6.0:
   dependencies:
     execa "^0.10.0"
     ip-regex "^2.1.0"
+
+defaults@^1.0.3:
+  version "1.0.3"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/defaults/-/defaults-1.0.3.tgz#c656051e9817d9ff08ed881477f3fe4019f3ef7d"
+  dependencies:
+    clone "^1.0.2"
 
 define-properties@^1.1.2:
   version "1.1.3"
@@ -1324,6 +1443,10 @@ des.js@^1.0.0:
 destroy@~1.0.4:
   version "1.0.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
+
+detect-indent@^5.0.0:
+  version "5.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"
 
 detect-libc@^1.0.2:
   version "1.0.3"
@@ -1419,6 +1542,16 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+dot-prop@^4.1.0:
+  version "4.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/dot-prop/-/dot-prop-4.2.0.tgz#1f19e0c2e1aa0e32797c49799f2837ac6af69c57"
+  dependencies:
+    is-obj "^1.0.0"
+
+duplexer3@^0.1.4:
+  version "0.1.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
@@ -1442,6 +1575,10 @@ ee-first@1.1.1:
 electron-to-chromium@^1.3.82:
   version "1.3.85"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/electron-to-chromium/-/electron-to-chromium-1.3.85.tgz#5c46f790aa96445cabc57eb9d17346b1e46476fe"
+
+elegant-spinner@^1.0.1:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -1604,6 +1741,10 @@ execa@^0.7.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+exit-hook@^1.0.0:
+  version "1.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
+
 expand-brackets@^2.1.4:
   version "2.1.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/expand-brackets/-/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
@@ -1664,7 +1805,7 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
-extend@~3.0.2:
+extend@3, extend@~3.0.0, extend@~3.0.2:
   version "3.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
@@ -1839,7 +1980,7 @@ fork-ts-checker-webpack-plugin@^0.5.0:
     minimatch "^3.0.4"
     tapable "^1.0.0"
 
-form-data@~2.3.2:
+form-data@^2.0.0, form-data@~2.3.2:
   version "2.3.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/form-data/-/form-data-2.3.3.tgz#dcce52c05f644f298c6a7ab936bd724ceffbf3a6"
   dependencies:
@@ -1976,6 +2117,12 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+global-dirs@^0.1.0:
+  version "0.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/global-dirs/-/global-dirs-0.1.1.tgz#b319c0dd4607f353f3be9cca4c72fc148c49f445"
+  dependencies:
+    ini "^1.3.4"
+
 global-modules-path@^2.3.0:
   version "2.3.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/global-modules-path/-/global-modules-path-2.3.0.tgz#b0e2bac6beac39745f7db5c59d26a36a0b94f7dc"
@@ -2021,7 +2168,23 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.2:
+got@^6.7.1:
+  version "6.7.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
+  dependencies:
+    create-error-class "^3.0.0"
+    duplexer3 "^0.1.4"
+    get-stream "^3.0.0"
+    is-redirect "^1.0.0"
+    is-retry-allowed "^1.0.0"
+    is-stream "^1.0.0"
+    lowercase-keys "^1.0.0"
+    safe-buffer "^5.0.1"
+    timed-out "^4.0.0"
+    unzip-response "^2.0.1"
+    url-parse-lax "^1.0.0"
+
+graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.15"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
 
@@ -2058,7 +2221,7 @@ has-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/has-symbols/-/has-symbols-1.0.0.tgz#ba1a8f1af2a0fc39650f5c850367704122063b44"
 
-has-unicode@^2.0.0:
+has-unicode@^2.0.0, has-unicode@^2.0.1:
   version "2.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
 
@@ -2216,6 +2379,14 @@ http-parser-js@>=0.4.0:
   version "0.5.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/http-parser-js/-/http-parser-js-0.5.0.tgz#d65edbede84349d0dc30320815a15d39cc3cbbd8"
 
+http-proxy-agent@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/http-proxy-agent/-/http-proxy-agent-1.0.0.tgz#cc1ce38e453bf984a0f7702d2dd59c73d081284a"
+  dependencies:
+    agent-base "2"
+    debug "2"
+    extend "3"
+
 http-proxy-middleware@~0.18.0:
   version "0.18.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/http-proxy-middleware/-/http-proxy-middleware-0.18.0.tgz#0987e6bb5a5606e5a69168d8f967a87f15dd8aab"
@@ -2244,6 +2415,14 @@ http-signature@~1.2.0:
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
+
+https-proxy-agent@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/https-proxy-agent/-/https-proxy-agent-1.0.0.tgz#35f7da6c48ce4ddbfa264891ac593ee5ff8671e6"
+  dependencies:
+    agent-base "2"
+    debug "2"
+    extend "3"
 
 humps@^2.0.1:
   version "2.0.1"
@@ -2301,6 +2480,10 @@ import-from@^2.1.0:
   dependencies:
     resolve-from "^3.0.0"
 
+import-lazy@^2.1.0:
+  version "2.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/import-lazy/-/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
+
 import-local@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/import-local/-/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
@@ -2341,7 +2524,7 @@ inherits@2.0.1:
   version "2.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
 
-ini@~1.3.0:
+ini@^1.3.4, ini@~1.3.0:
   version "1.3.5"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
@@ -2356,7 +2539,7 @@ interpret@^1.1.0:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.1.0, invariant@^2.2.1, invariant@^2.2.4:
+invariant@^2.1.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -2385,6 +2568,13 @@ ipaddr.js@1.8.0:
 ipaddr.js@^1.5.2:
   version "1.8.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ipaddr.js/-/ipaddr.js-1.8.1.tgz#fa4b79fa47fd3def5e3b159825161c0a519c9427"
+
+is-absolute@^0.2.3:
+  version "0.2.6"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-absolute/-/is-absolute-0.2.6.tgz#20de69f3db942ef2d87b9c2da36f172235b1b5eb"
+  dependencies:
+    is-relative "^0.2.1"
+    is-windows "^0.2.0"
 
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
@@ -2421,6 +2611,12 @@ is-builtin-module@^1.0.0:
 is-callable@^1.1.3, is-callable@^1.1.4:
   version "1.1.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-callable/-/is-callable-1.1.4.tgz#1e1adf219e1eeb684d691f9d6a05ff0d30a24d75"
+
+is-ci@^1.0.10:
+  version "1.2.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-ci/-/is-ci-1.2.1.tgz#e3779c8ee17fccf428488f6e281187f2e632841c"
+  dependencies:
+    ci-info "^1.5.0"
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
@@ -2500,11 +2696,26 @@ is-glob@^4.0.0:
   dependencies:
     is-extglob "^2.1.1"
 
+is-installed-globally@^0.1.0:
+  version "0.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-installed-globally/-/is-installed-globally-0.1.0.tgz#0dfd98f5a9111716dd535dda6492f67bf3d25a80"
+  dependencies:
+    global-dirs "^0.1.0"
+    is-path-inside "^1.0.0"
+
+is-npm@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-npm/-/is-npm-1.0.0.tgz#f2fb63a65e4905b406c86072765a1a4dc793b9f4"
+
 is-number@^3.0.0:
   version "3.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-number/-/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"
   dependencies:
     kind-of "^3.0.2"
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -2522,11 +2733,19 @@ is-path-inside@^1.0.0:
   dependencies:
     path-is-inside "^1.0.1"
 
+is-plain-obj@^1.0.0:
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
+
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
   dependencies:
     isobject "^3.0.1"
+
+is-redirect@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
 
 is-regex@^1.0.4:
   version "1.0.4"
@@ -2534,7 +2753,17 @@ is-regex@^1.0.4:
   dependencies:
     has "^1.0.1"
 
-is-stream@^1.1.0:
+is-relative@^0.2.1:
+  version "0.2.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-relative/-/is-relative-0.2.1.tgz#d27f4c7d516d175fb610db84bbeef23c3bc97aa5"
+  dependencies:
+    is-unc-path "^0.1.1"
+
+is-retry-allowed@^1.0.0:
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-retry-allowed/-/is-retry-allowed-1.1.0.tgz#11a060568b67339444033d0125a61a20d564fb34"
+
+is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
@@ -2548,9 +2777,19 @@ is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
 
+is-unc-path@^0.1.1:
+  version "0.1.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-unc-path/-/is-unc-path-0.1.2.tgz#6ab053a72573c10250ff416a3814c35178af39b9"
+  dependencies:
+    unc-path-regex "^0.1.0"
+
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
+
+is-windows@^0.2.0:
+  version "0.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/is-windows/-/is-windows-0.2.0.tgz#de1aa6d63ea29dd248737b69f1ff8b8002d2108c"
 
 is-windows@^1.0.0, is-windows@^1.0.2:
   version "1.0.2"
@@ -2643,6 +2882,20 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
+jspm-config@^0.3.0:
+  version "0.3.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/jspm-config/-/jspm-config-0.3.4.tgz#44c26902e4ae8ece2366cedc9ff16b10a5f391c6"
+  dependencies:
+    any-promise "^1.3.0"
+    graceful-fs "^4.1.4"
+    make-error-cause "^1.2.1"
+    object.pick "^1.1.2"
+    parse-json "^2.2.0"
+    strip-bom "^3.0.0"
+    thenify "^3.2.0"
+    throat "^3.0.0"
+    xtend "^4.0.1"
+
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -2651,6 +2904,10 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+jsrsasign@^8.0.12:
+  version "8.0.12"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/jsrsasign/-/jsrsasign-8.0.12.tgz#22abb9656d34a30b9530436720835e89c2e5c316"
 
 keycode@^2.1.2:
   version "2.2.0"
@@ -2680,6 +2937,12 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
 
+latest-version@^3.0.0:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/latest-version/-/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"
+  dependencies:
+    package-json "^4.0.0"
+
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -2691,6 +2954,10 @@ lcid@^2.0.0:
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
   dependencies:
     invert-kv "^2.0.0"
+
+listify@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/listify/-/listify-1.0.0.tgz#03ca7ba2d150d4267773f74e57558d1053d2bee3"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -2728,6 +2995,12 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lockfile@^1.0.1:
+  version "1.0.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lockfile/-/lockfile-1.0.4.tgz#07f819d25ae48f87e538e6578b6964a4981a5609"
+  dependencies:
+    signal-exit "^3.0.2"
+
 lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -2740,6 +3013,10 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
+lodash.flowright@^3.5.0:
+  version "3.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lodash.flowright/-/lodash.flowright-3.5.0.tgz#2b5fff399716d7e7dc5724fe9349f67065184d67"
+
 lodash.mergewith@^4.6.0:
   version "4.6.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
@@ -2751,6 +3028,13 @@ lodash.tail@^4.1.1:
 lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.5, lodash@~4.17.10:
   version "4.17.11"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
+log-update@^1.0.2:
+  version "1.0.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/log-update/-/log-update-1.0.2.tgz#19929f64c4093d2d2e7075a1dad8af59c296b8d1"
+  dependencies:
+    ansi-escapes "^1.0.0"
+    cli-cursor "^1.0.2"
 
 loglevel@^1.4.1:
   version "1.6.1"
@@ -2772,6 +3056,10 @@ loud-rejection@^1.0.0:
 lower-case@^1.1.1:
   version "1.1.4"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
+
+lowercase-keys@^1.0.0:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/lowercase-keys/-/lowercase-keys-1.0.1.tgz#6f9e30b47084d971a7c820ff15a6c5167b74c26f"
 
 lru-cache@^4.0.1, lru-cache@^4.1.3:
   version "4.1.4"
@@ -2796,6 +3084,16 @@ make-dir@^1.0.0:
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
   dependencies:
     pify "^3.0.0"
+
+make-error-cause@^1.2.1:
+  version "1.2.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/make-error-cause/-/make-error-cause-1.2.2.tgz#df0388fcd0b37816dff0a5fb8108939777dcbc9d"
+  dependencies:
+    make-error "^1.2.0"
+
+make-error@^1.2.0:
+  version "1.3.5"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/make-error/-/make-error-1.3.5.tgz#efe4e81f6db28cadd605c70f29c831b58ef776c8"
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"
@@ -3200,6 +3498,12 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
+nopt@~1.0.10:
+  version "1.0.10"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
+  dependencies:
+    abbrev "1"
+
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.4.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -3292,7 +3596,7 @@ object.getownpropertydescriptors@^2.0.3:
     define-properties "^1.1.2"
     es-abstract "^1.5.1"
 
-object.pick@^1.3.0:
+object.pick@^1.1.1, object.pick@^1.1.2, object.pick@^1.3.0:
   version "1.3.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/object.pick/-/object.pick-1.3.0.tgz#87a10ac4c1694bd2e1cbf53591a66141fb5dd747"
   dependencies:
@@ -3301,6 +3605,14 @@ object.pick@^1.3.0:
 obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
+
+oidc-client@^1.6.1:
+  version "1.6.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/oidc-client/-/oidc-client-1.6.1.tgz#76a7f24ad7fb5342269b6cae895bb32e1e27e785"
+  dependencies:
+    jsrsasign "^8.0.12"
+  optionalDependencies:
+    babel-polyfill ">=6.9.1"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -3317,6 +3629,10 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   dependencies:
     wrappy "1"
+
+onetime@^1.0.0:
+  version "1.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
 
 opn@^5.1.0:
   version "5.4.0"
@@ -3418,6 +3734,15 @@ p-try@^1.0.0:
 p-try@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
+
+package-json@^4.0.0:
+  version "4.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/package-json/-/package-json-4.0.1.tgz#8869a0401253661c4c4ca3da6c2121ed555f5eed"
+  dependencies:
+    got "^6.7.1"
+    registry-auth-token "^3.0.1"
+    registry-url "^3.0.3"
+    semver "^5.1.0"
 
 pako@~1.0.5:
   version "1.0.6"
@@ -3593,6 +3918,37 @@ popmotion@^8.5.0:
     stylefire "^2.0.7"
     tslib "^1.9.1"
 
+popsicle-proxy-agent@^3.0.0:
+  version "3.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/popsicle-proxy-agent/-/popsicle-proxy-agent-3.0.0.tgz#b9133c55d945759ab7ee61b7711364620d3aeadc"
+  dependencies:
+    http-proxy-agent "^1.0.0"
+    https-proxy-agent "^1.0.0"
+
+popsicle-retry@^3.2.0:
+  version "3.2.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/popsicle-retry/-/popsicle-retry-3.2.1.tgz#e06e866533b42a7a123eb330cbe63a7cebcba10c"
+  dependencies:
+    any-promise "^1.1.0"
+    xtend "^4.0.1"
+
+popsicle-rewrite@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/popsicle-rewrite/-/popsicle-rewrite-1.0.0.tgz#1dd4e8ea9c3182351fb820f87934d992f7fb9007"
+
+popsicle-status@^2.0.0:
+  version "2.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/popsicle-status/-/popsicle-status-2.0.1.tgz#8dd70c4fe7c694109add784ffe80eacac1e7b28d"
+
+popsicle@^9.0.0:
+  version "9.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/popsicle/-/popsicle-9.2.0.tgz#adc9fc808644739b360ff063426545cdfe58e0b4"
+  dependencies:
+    concat-stream "^1.4.7"
+    form-data "^2.0.0"
+    make-error-cause "^1.2.1"
+    tough-cookie "^2.0.0"
+
 portfinder@^1.0.9:
   version "1.0.19"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/portfinder/-/portfinder-1.0.19.tgz#07e87914a55242dcda5b833d42f018d6875b595f"
@@ -3677,6 +4033,10 @@ postcss@^7.0.0, postcss@^7.0.5:
     source-map "^0.6.1"
     supports-color "^5.5.0"
 
+prepend-http@^1.0.1:
+  version "1.0.4"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
+
 prettier-tslint@^0.4.0:
   version "0.4.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/prettier-tslint/-/prettier-tslint-0.4.0.tgz#3c2b94e171f8ec2028aef320c9e04ac7817beb63"
@@ -3715,6 +4075,10 @@ process@^0.11.10:
   version "0.11.10"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
 
+promise-finally@^3.0.0:
+  version "3.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/promise-finally/-/promise-finally-3.0.0.tgz#ddd5d0f895432b1206ceb8da1275064d18e7aa23"
+
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
@@ -3751,6 +4115,10 @@ pseudomap@^1.0.2:
 psl@^1.1.24:
   version "1.1.29"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/psl/-/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
+
+psl@^1.1.28:
+  version "1.1.31"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
 
 public-encrypt@^4.0.0:
   version "4.0.3"
@@ -3793,7 +4161,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-punycode@^2.1.0:
+punycode@^2.1.0, punycode@^2.1.1:
   version "2.1.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
@@ -3846,7 +4214,7 @@ raw-body@2.3.3:
     iconv-lite "0.4.23"
     unpipe "1.0.0"
 
-rc@^1.2.7:
+rc@^1.0.1, rc@^1.1.5, rc@^1.1.6, rc@^1.2.7:
   version "1.2.8"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
   dependencies:
@@ -3952,6 +4320,15 @@ react@^16.6.0:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
+react@^16.6.3:
+  version "16.7.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.12.0"
+
 read-pkg-up@^1.0.1:
   version "1.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/read-pkg-up/-/read-pkg-up-1.0.1.tgz#9d63c13276c065918d57f002a57f40a1b643fb02"
@@ -4016,6 +4393,10 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
 
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -4038,6 +4419,19 @@ regexpu-core@^1.0.0:
     regenerate "^1.2.1"
     regjsgen "^0.2.0"
     regjsparser "^0.1.4"
+
+registry-auth-token@^3.0.1:
+  version "3.3.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/registry-auth-token/-/registry-auth-token-3.3.2.tgz#851fd49038eecb586911115af845260eec983f20"
+  dependencies:
+    rc "^1.1.6"
+    safe-buffer "^5.0.1"
+
+registry-url@^3.0.3:
+  version "3.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/registry-url/-/registry-url-3.1.0.tgz#3d4ef870f73dde1d77f0cf9a381432444e174942"
+  dependencies:
+    rc "^1.0.1"
 
 regjsgen@^0.2.0:
   version "0.2.0"
@@ -4150,11 +4544,18 @@ resolve@^1.3.2:
   dependencies:
     path-parse "^1.0.5"
 
+restore-cursor@^1.0.1:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/restore-cursor/-/restore-cursor-1.0.1.tgz#34661f46886327fed2991479152252df92daa541"
+  dependencies:
+    exit-hook "^1.0.0"
+    onetime "^1.0.0"
+
 ret@~0.1.10:
   version "0.1.15"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
@@ -4225,6 +4626,13 @@ scheduler@^0.11.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
+scheduler@^0.12.0:
+  version "0.12.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/scheduler/-/scheduler-0.12.0.tgz#8ab17699939c0aedc5a196a657743c496538647b"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
 schema-utils@^0.4.4:
   version "0.4.7"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
@@ -4257,9 +4665,19 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.7.5"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@^5.5.0:
+semver-diff@^2.0.0:
+  version "2.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/semver-diff/-/semver-diff-2.1.0.tgz#4bbb8437c8d37e4b0cf1a68fd726ec6d645d6d36"
+  dependencies:
+    semver "^5.0.3"
+
+"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.5.0:
   version "5.6.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
+
+semver@~5.0.1:
+  version "5.0.3"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/semver/-/semver-5.0.3.tgz#77466de589cd5d3c95f138aa78bc569a3cb5d27a"
 
 semver@~5.3.0:
   version "5.3.0"
@@ -4363,13 +4781,19 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
-signal-exit@^3.0.0:
+signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+
+slice-ansi@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/slice-ansi/-/slice-ansi-1.0.0.tgz#044f1a49d8842ff307aad6b505ed178bd950134d"
+  dependencies:
+    is-fullwidth-code-point "^2.0.0"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -4415,6 +4839,12 @@ sockjs@0.3.19:
   dependencies:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
+
+sort-keys@^1.0.0:
+  version "1.1.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/sort-keys/-/sort-keys-1.1.2.tgz#441b6d4d346798f1b4e49e8920adfba0e543f9ad"
+  dependencies:
+    is-plain-obj "^1.0.0"
 
 source-list-map@^2.0.0:
   version "2.0.1"
@@ -4602,6 +5032,10 @@ strict-uri-encode@^2.0.0:
   version "2.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
 
+string-template@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/string-template/-/string-template-1.0.0.tgz#9e9f2233dc00f218718ec379a28a5673ecca8b96"
+
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -4722,6 +5156,12 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
+term-size@^1.2.0:
+  version "1.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/term-size/-/term-size-1.2.0.tgz#458b83887f288fc56d6fffbfad262e26638efa69"
+  dependencies:
+    execa "^0.7.0"
+
 terser-webpack-plugin@^1.1.0:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/terser-webpack-plugin/-/terser-webpack-plugin-1.1.0.tgz#cf7c25a1eee25bf121f4a587bb9e004e3f80e528"
@@ -4747,6 +5187,16 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
+thenify@^3.1.0, thenify@^3.2.0:
+  version "3.3.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
+  dependencies:
+    any-promise "^1.0.0"
+
+throat@^3.0.0:
+  version "3.2.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/throat/-/throat-3.2.0.tgz#50cb0670edbc40237b9e347d7e1f88e4620af836"
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -4761,6 +5211,10 @@ through@~2.3.6:
 thunky@^1.0.2:
   version "1.0.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/thunky/-/thunky-1.0.3.tgz#f5df732453407b09191dae73e2a8cc73f381a826"
+
+timed-out@^4.0.0:
+  version "4.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
 
 timers-browserify@^2.0.4:
   version "2.0.10"
@@ -4793,6 +5247,19 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+touch@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/touch/-/touch-1.0.0.tgz#449cbe2dbae5a8c8038e30d71fa0ff464947c4de"
+  dependencies:
+    nopt "~1.0.10"
+
+tough-cookie@^2.0.0:
+  version "2.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
+  dependencies:
+    psl "^1.1.28"
+    punycode "^2.1.1"
 
 tough-cookie@~2.4.3:
   version "2.4.3"
@@ -4901,9 +5368,70 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
+typescript@^2.1.4:
+  version "2.9.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
+
 typescript@^3.1.6:
   version "3.1.6"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
+
+typings-core@^2.3.3:
+  version "2.3.3"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/typings-core/-/typings-core-2.3.3.tgz#09ec54cd5b11dd5f1ef2fc0ab31d37002ca2b5ad"
+  dependencies:
+    array-uniq "^1.0.2"
+    configstore "^3.0.0"
+    debug "^2.2.0"
+    detect-indent "^5.0.0"
+    graceful-fs "^4.1.2"
+    has "^1.0.1"
+    invariant "^2.2.0"
+    is-absolute "^0.2.3"
+    jspm-config "^0.3.0"
+    listify "^1.0.0"
+    lockfile "^1.0.1"
+    make-error-cause "^1.2.1"
+    mkdirp "^0.5.1"
+    object.pick "^1.1.1"
+    parse-json "^2.2.0"
+    popsicle "^9.0.0"
+    popsicle-proxy-agent "^3.0.0"
+    popsicle-retry "^3.2.0"
+    popsicle-rewrite "^1.0.0"
+    popsicle-status "^2.0.0"
+    promise-finally "^3.0.0"
+    rc "^1.1.5"
+    rimraf "^2.4.4"
+    sort-keys "^1.0.0"
+    string-template "^1.0.0"
+    strip-bom "^3.0.0"
+    thenify "^3.1.0"
+    throat "^3.0.0"
+    touch "^1.0.0"
+    typescript "^2.1.4"
+    xtend "^4.0.0"
+    zip-object "^0.1.0"
+
+typings@^2.1.1:
+  version "2.1.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/typings/-/typings-2.1.1.tgz#bacc69d255970a478e09f76c7f689975d535a78a"
+  dependencies:
+    archy "^1.0.0"
+    bluebird "^3.1.1"
+    chalk "^1.0.0"
+    cli-truncate "^1.0.0"
+    columnify "^1.5.2"
+    elegant-spinner "^1.0.1"
+    has-unicode "^2.0.1"
+    listify "^1.0.0"
+    log-update "^1.0.2"
+    minimist "^1.2.0"
+    promise-finally "^3.0.0"
+    typings-core "^2.3.3"
+    update-notifier "^2.0.0"
+    wordwrap "^1.0.0"
+    xtend "^4.0.1"
 
 uglify-js@3.4.x:
   version "3.4.9"
@@ -4911,6 +5439,10 @@ uglify-js@3.4.x:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
+
+unc-path-regex@^0.1.0:
+  version "0.1.2"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
 
 uncontrollable@^4.1.0:
   version "4.1.0"
@@ -4939,6 +5471,12 @@ unique-slug@^2.0.0:
   dependencies:
     imurmurhash "^0.1.4"
 
+unique-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/unique-string/-/unique-string-1.0.0.tgz#9e1057cca851abb93398f8b33ae187b99caec11a"
+  dependencies:
+    crypto-random-string "^1.0.0"
+
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
@@ -4950,9 +5488,28 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
+unzip-response@^2.0.1:
+  version "2.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/unzip-response/-/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
+
 upath@^1.0.5:
   version "1.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/upath/-/upath-1.1.0.tgz#35256597e46a581db4793d0ce47fa9aebfc9fabd"
+
+update-notifier@^2.0.0:
+  version "2.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/update-notifier/-/update-notifier-2.5.0.tgz#d0744593e13f161e406acb1d9408b72cad08aff6"
+  dependencies:
+    boxen "^1.2.1"
+    chalk "^2.0.1"
+    configstore "^3.0.0"
+    import-lazy "^2.1.0"
+    is-ci "^1.0.10"
+    is-installed-globally "^0.1.0"
+    is-npm "^1.0.0"
+    latest-version "^3.0.0"
+    semver-diff "^2.0.0"
+    xdg-basedir "^3.0.0"
 
 upper-case@^1.1.1:
   version "1.1.3"
@@ -4967,6 +5524,12 @@ uri-js@^4.2.2:
 urix@^0.1.0:
   version "0.1.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
+
+url-parse-lax@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/url-parse-lax/-/url-parse-lax-1.0.0.tgz#7af8f303645e9bd79a272e7a14ac68bc0609da73"
+  dependencies:
+    prepend-http "^1.0.1"
 
 url-parse@^1.4.3:
   version "1.4.4"
@@ -5079,6 +5642,12 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/wbuf/-/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
   dependencies:
     minimalistic-assert "^1.0.0"
+
+wcwidth@^1.0.0:
+  version "1.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/wcwidth/-/wcwidth-1.0.1.tgz#f0b0dcf915bc5ff1528afadb2c0e17b532da2fe8"
+  dependencies:
+    defaults "^1.0.3"
 
 webpack-cli@^3.1.2:
   version "3.1.2"
@@ -5228,6 +5797,16 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
+widest-line@^2.0.0:
+  version "2.0.1"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/widest-line/-/widest-line-2.0.1.tgz#7438764730ec7ef4381ce4df82fb98a53142a3fc"
+  dependencies:
+    string-width "^2.1.1"
+
+wordwrap@^1.0.0:
+  version "1.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
+
 worker-farm@^1.5.2:
   version "1.6.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
@@ -5253,11 +5832,23 @@ wrappy@1:
   version "1.0.2"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
+write-file-atomic@^2.0.0:
+  version "2.3.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/write-file-atomic/-/write-file-atomic-2.3.0.tgz#1ff61575c2e2a4e8e510d6fa4e243cce183999ab"
+  dependencies:
+    graceful-fs "^4.1.11"
+    imurmurhash "^0.1.4"
+    signal-exit "^3.0.2"
+
+xdg-basedir@^3.0.0:
+  version "3.0.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
+
 xregexp@4.0.0:
   version "4.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/xregexp/-/xregexp-4.0.0.tgz#e698189de49dd2a18cc5687b05e17c8e43943020"
 
-xtend@^4.0.0, xtend@~4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
@@ -5370,3 +5961,7 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+zip-object@^0.1.0:
+  version "0.1.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/zip-object/-/zip-object-0.1.0.tgz#c1a0da04c88c837756e248680a03ff902ec3f53a"

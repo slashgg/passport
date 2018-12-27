@@ -1,9 +1,13 @@
-import * as React from 'react';
-
+import {
+  ToasterContext,
+  ToasterContextType,
+  withData,
+  WithDataOptionsMapper,
+  WithDataProps,
+} from '@slashgg/singapore';
 import { Panel } from 'passport/components/panel';
-import { withData, WithDataOptionsMapper, WithDataProps } from 'passport/components/with-data';
 import { passport } from 'passport/core/passport';
-import { PassportContext, PassportContextType } from 'passport/core/passport-context';
+import * as React from 'react';
 import { RegisterModel } from '../../models/register-model';
 import { RegisterForm } from '../register-form';
 
@@ -11,17 +15,11 @@ export interface PublicProps {
   returnUrl?: string;
 }
 
-type Props = PublicProps & WithDataProps;
+type Props = PublicProps & WithDataProps<{}>;
 
 class RegisterComponent extends React.Component<Props> {
-  public static contextType = PassportContext;
-  public context!: PassportContextType;
-
-  public componentDidMount() {
-    if (this.context.user) {
-      this.redirect();
-    }
-  }
+  public static contextType = ToasterContext;
+  public context!: ToasterContextType;
 
   public render() {
     return (
@@ -45,10 +43,6 @@ class RegisterComponent extends React.Component<Props> {
       }
     });
   };
-
-  private redirect = () => {
-    passport.history.push(this.props.returnUrl || '/');
-  };
 }
 
 const withDataOptionsMapper: WithDataOptionsMapper<PublicProps> = () => ({
@@ -56,4 +50,4 @@ const withDataOptionsMapper: WithDataOptionsMapper<PublicProps> = () => ({
   path: '/api/v1/register',
 });
 
-export const Register: React.ComponentClass<PublicProps> = withData(RegisterComponent, withDataOptionsMapper);
+export const Register: React.ComponentClass<PublicProps> = withData(withDataOptionsMapper)(RegisterComponent);
