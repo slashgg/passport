@@ -39,7 +39,7 @@ namespace Passport
         AllowAccessTokensViaBrowser = true,
         RedirectUris = new HashSet<string>
         {
-          "https://localhost:3001/signin-callback",
+          "http://localhost:3000/signin-callback",
           "https://slash.gg/signin-callback"
         },
         RequireConsent = false,
@@ -48,6 +48,16 @@ namespace Passport
           "openid",
           "profile",
           "@slashgg/alexandria.full_access"
+        },
+        AllowedCorsOrigins = new HashSet<string>
+        {
+          "https://slash.gg",
+          "http://localhost:3000",
+        },
+        PostLogoutRedirectUris = new HashSet<string>
+        {
+          "https://slash.gg",
+          "http://localhost:3000",
         }
       },
       new Client
