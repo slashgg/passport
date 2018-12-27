@@ -36,7 +36,9 @@ class ResetPasswordFormComponent extends React.Component<Props, State> {
               />
             </div>
             <div className="flex">
-              <Button className="ml-auto">Change</Button>
+              <Button className="ml-auto" loading={this.props.isSubmitting}>
+                Change
+              </Button>
             </div>
           </div>
         </fieldset>

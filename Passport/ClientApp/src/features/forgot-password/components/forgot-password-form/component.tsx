@@ -35,7 +35,9 @@ class ForgotPasswordFormComponent extends React.Component<Props, State> {
               />
             </div>
             <div className="mt-8">
-              <Button block>Send Reset Email</Button>
+              <Button block loading={this.props.isSubmitting}>
+                Send Reset Email
+              </Button>
             </div>
           </div>
         </fieldset>

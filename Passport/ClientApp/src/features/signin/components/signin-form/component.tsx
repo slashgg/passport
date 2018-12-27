@@ -38,7 +38,9 @@ class SignInFormComponent extends React.Component<Props, State> {
             <Checkbox label="Remember me" onChange={this.handleRememberMe} />
           </div>
           <div className="mt-8">
-            <Button block>Sign In</Button>
+            <Button block loading={this.props.isSubmitting}>
+              Sign In
+            </Button>
           </div>
         </fieldset>
       </form>
