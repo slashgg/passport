@@ -248,6 +248,36 @@ namespace Passport.Services
       return result;
     }
 
+    public async Task<ServiceResult> UpdateUserAccount(Guid userId, DTOs.UpdateAccount account)
+    {
+      var result = new ServiceResult();
+      var user = await userManager.FindByIdAsync(userId.ToString());
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound,
+        });
+
+        return result;
+      }
+
+      user.Update(account.Email, account.UserName);
+      var updateResult = await userManager.UpdateAsync(user);
+
+      if (!updateResult.Succeeded)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UpdateFailed),
+          Message = Errors.UpdateFailed,
+        });
+      }
+
+      return result;
+    }
+
     private async Task<bool> ValidateReturnUrlAsync(string returnUrl)
     {
       IdentityServer4.Models.AuthorizationRequest context = await interaction.GetAuthorizationContextAsync(returnUrl);

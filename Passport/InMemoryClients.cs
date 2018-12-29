@@ -10,6 +10,27 @@ namespace Passport
       new Client
       {
         Enabled = true,
+        ClientId = "alexandria-direct",
+        ClientSecrets = new HashSet<Secret>
+        {
+          new Secret("supersecretpassword".Sha256()),
+        },
+        AllowedGrantTypes = new HashSet<string>
+        {
+          GrantType.ClientCredentials,
+        },
+       RequireClientSecret = true,
+       RequireConsent = false,
+       AllowedScopes = new HashSet<string>
+       {
+         "openId",
+         "profile",
+         "@slashgg/passport.full_access"
+       }
+      },
+      new Client
+      {
+        Enabled = true,
         ClientId = "slashgg-backchannel",
         ClientSecrets = new HashSet<Secret>
         {

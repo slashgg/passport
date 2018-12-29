@@ -1,3 +1,5 @@
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -109,6 +111,23 @@ namespace Passport
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
         .AddInMemoryClients(InMemoryClients.Clients)
         .AddAspNetIdentity<PassportUser>();
+
+      services.AddAuthentication("Bearer")
+              .AddIdentityServerAuthentication(options =>
+              {
+                options.Authority = "http://localhost:62978";
+                options.RequireHttpsMetadata = false;
+                options.ApiName = "@slashgg/passport";
+              });
+
+      services.AddAuthorization(auth =>
+      {
+        auth.AddPolicy("Backchannel", policy =>
+        {
+          policy.AuthenticationSchemes.Add(IdentityServerAuthenticationDefaults.AuthenticationScheme);
+          policy.RequireScope("@slashgg/passport.full_access");
+        });
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,6 +148,7 @@ namespace Passport
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
+      app.UseAuthentication();
 
       app.UseCors();
 

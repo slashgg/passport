@@ -97,6 +97,15 @@ namespace Passport.Utility {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to update user.
+        /// </summary>
+        public static string UpdateFailed {
+            get {
+                return ResourceManager.GetString("UpdateFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User is not found..
         /// </summary>
         public static string UserNotFound {
