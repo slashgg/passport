@@ -23,12 +23,14 @@ namespace Passport
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration)
+    public Startup(IHostingEnvironment env, IConfiguration configuration)
     {
       Configuration = configuration;
+      Production = env.IsProduction();
     }
 
     public IConfiguration Configuration { get; }
+    public bool Production { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -115,8 +117,8 @@ namespace Passport
       services.AddAuthentication("Bearer")
               .AddIdentityServerAuthentication(options =>
               {
-                options.Authority = "http://localhost:62978";
-                options.RequireHttpsMetadata = false;
+                options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
+                options.RequireHttpsMetadata = Production;
                 options.ApiName = "@slashgg/passport";
               });
 

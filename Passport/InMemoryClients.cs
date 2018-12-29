@@ -13,7 +13,7 @@ namespace Passport
         ClientId = "alexandria-direct",
         ClientSecrets = new HashSet<Secret>
         {
-          new Secret("supersecretpassword".Sha256()),
+          new Secret("aTPZWLR9awVV9RdCP6i4UcyBb4XBZ4".Sha256()),
         },
         AllowedGrantTypes = new HashSet<string>
         {
