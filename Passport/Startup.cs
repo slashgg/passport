@@ -1,3 +1,5 @@
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -21,12 +23,14 @@ namespace Passport
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration)
+    public Startup(IHostingEnvironment env, IConfiguration configuration)
     {
       Configuration = configuration;
+      Production = env.IsProduction();
     }
 
     public IConfiguration Configuration { get; }
+    public bool Production { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -109,6 +113,23 @@ namespace Passport
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
         .AddInMemoryClients(InMemoryClients.Clients)
         .AddAspNetIdentity<PassportUser>();
+
+      services.AddAuthentication("Bearer")
+              .AddIdentityServerAuthentication(options =>
+              {
+                options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
+                options.RequireHttpsMetadata = Production;
+                options.ApiName = "@slashgg/passport";
+              });
+
+      services.AddAuthorization(auth =>
+      {
+        auth.AddPolicy("Backchannel", policy =>
+        {
+          policy.AuthenticationSchemes.Add(IdentityServerAuthenticationDefaults.AuthenticationScheme);
+          policy.RequireScope("@slashgg/passport.full_access");
+        });
+      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,6 +150,7 @@ namespace Passport
       app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseSpaStaticFiles();
+      app.UseAuthentication();
 
       app.UseCors();
 

@@ -91,6 +91,12 @@ namespace Passport.Services
         }
       }
 
+      if (identityResult.Succeeded)
+      {
+        var userClient = new Passport.Utility.Clients.Alexandria.UserProfileClient(new System.Net.Http.HttpClient());
+        await userClient.CreateProfileAsync(new Utility.Clients.Alexandria.UserProfileCreate { Email = model.Email, DisplayName = user.UserName });
+      }
+
       return result;
     }
 
@@ -237,6 +243,36 @@ namespace Passport.Services
           Message = Errors.InvalidSignin
         });
         result.Code = 401;
+      }
+
+      return result;
+    }
+
+    public async Task<ServiceResult> UpdateUserAccount(Guid userId, DTOs.UpdateAccount account)
+    {
+      var result = new ServiceResult();
+      var user = await userManager.FindByIdAsync(userId.ToString());
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound,
+        });
+
+        return result;
+      }
+
+      user.Update(account.Email, account.UserName);
+      var updateResult = await userManager.UpdateAsync(user);
+
+      if (!updateResult.Succeeded)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UpdateFailed),
+          Message = Errors.UpdateFailed,
+        });
       }
 
       return result;

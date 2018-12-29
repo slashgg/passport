@@ -129,6 +129,9 @@
   <data name="InvalidSignoutId" xml:space="preserve">
     <value>Invalid sign out id.</value>
   </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>Unable to update user</value>
+  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>User is not found.</value>
   </data>

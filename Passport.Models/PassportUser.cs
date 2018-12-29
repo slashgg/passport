@@ -14,5 +14,11 @@ namespace Passport.Models
       Email = email;
       UserName = username + $"#{MurmurHash2.ComputeHash(email) % 100000}";
     }
+
+    public void Update(string email, string username)
+    {
+      Email = email;
+      UserName = username + $"#{MurmurHash2.ComputeHash(email) % 100000}";
+    }
   }
 }
