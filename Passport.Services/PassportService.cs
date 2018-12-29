@@ -259,6 +259,7 @@ namespace Passport.Services
           Key = nameof(Errors.UserNotFound),
           Message = Errors.UserNotFound,
         });
+        result.Code = 404;
 
         return result;
       }
@@ -273,6 +274,17 @@ namespace Passport.Services
           Key = nameof(Errors.UpdateFailed),
           Message = Errors.UpdateFailed,
         });
+
+        foreach (var error in updateResult.Errors)
+        {
+          result.Errors.Add(new ServiceResult.Error
+          {
+            Key = error.Code,
+            Message = error.Description,
+          });
+        }
+
+        result.Code = 400;
       }
 
       return result;

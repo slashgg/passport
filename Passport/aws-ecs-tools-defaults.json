@@ -1,7 +1,7 @@
 
 {
     "region" : "us-east-1",
-    "profile" : "slashgg",
+    "profile" : "default",
     "configuration" : "Release",
     "tag"           : "passport:latest",
     "docker-build-working-dir" : "",
