@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Passport.Interfaces;
 using Svalbard;
+using System;
+using System.Threading.Tasks;
 
 namespace Passport.Areas.v1.Controllers
 {
-  [Route("api/users")]
+  [Area("v1")]
+  [Route("api/[area]/users")]
   [ApiController]
   public class AccountsController : ControllerBase
   {
