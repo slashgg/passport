@@ -197,19 +197,6 @@ namespace Passport.Services
         return result;
       }
 
-      PassportUser user = await userManager.FindByIdAsync(context.SubjectId);
-      if (user == null)
-      {
-        result.Errors.Add(new ServiceResult.Error
-        {
-          Key = nameof(Errors.UserNotFound),
-          Message = Errors.UserNotFound
-        });
-        result.Code = 400;
-
-        return result;
-      }
-
       await signInManager.SignOutAsync();
 
       result.Data = context.PostLogoutRedirectUri;

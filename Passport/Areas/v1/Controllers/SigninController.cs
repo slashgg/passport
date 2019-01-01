@@ -54,7 +54,7 @@ namespace Passport.Areas.v1.Controllers
         return signout;
       }
 
-      return Ok();
+      return BadRequest();
     }
   }
 }
