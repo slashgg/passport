@@ -54,12 +54,7 @@ namespace Passport.Areas.v1.Controllers
         return signout;
       }
 
-      foreach (Utility.ServiceResult.Error error in result.Errors)
-      {
-        ModelState.AddModelError(error.Key, error.Message);
-      }
-
-      return BadRequest();
+      return Ok();
     }
   }
 }
