@@ -94,7 +94,7 @@ namespace Passport.Services
       if (identityResult.Succeeded)
       {
         var userClient = new Passport.Utility.Clients.Alexandria.UserProfileClient(new System.Net.Http.HttpClient());
-        await userClient.CreateProfileAsync(new Utility.Clients.Alexandria.UserProfileCreate { Email = model.Email, DisplayName = user.UserName });
+        await userClient.CreateProfileAsync(new Utility.Clients.Alexandria.UserProfileCreate { Id = Guid.Parse(user.Id), Email = model.Email, DisplayName = user.UserName });
       }
 
       return result;
