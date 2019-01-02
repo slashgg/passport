@@ -16,7 +16,7 @@ COPY . .
 WORKDIR "/src/Passport"
 RUN dotnet build "Passport.csproj" -c Release -o /app
 
-FROM node:8 AS node-build
+FROM node:10 AS node-build
 WORKDIR /src
 COPY ["Passport/ClientApp/", "ClientApp/"]
 WORKDIR "/src/ClientApp"

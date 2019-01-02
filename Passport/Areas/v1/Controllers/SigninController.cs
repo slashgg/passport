@@ -48,7 +48,7 @@ namespace Passport.Areas.v1.Controllers
       {
         Signout signout = new Signout
         {
-          PostLogoutRedirectUri = result.Data
+          PostLogoutRedirectUri = result.Data ?? "https://slash.gg"
         };
 
         return signout;

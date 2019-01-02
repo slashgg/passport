@@ -2,7 +2,7 @@ import { BaseInteractive } from '@slashgg/diwali';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import logo from './logo.svg';
+import logo from './logo.png';
 
 export enum BrandSize {
   Tiny = 'w-2 md:w-4',
@@ -17,7 +17,7 @@ export interface PublicProps {
 }
 
 export const Brand: React.SFC<PublicProps> = props => {
-  const classes = classNames('font-black font-headings text-primary opacity-50', {
+  const classes = classNames('font-black font-headings text-primary', {
     'text-2xl md:text-2xl ml-1': props.size === BrandSize.Tiny,
     'text-3xl md:text-4xl ml-2': props.size === BrandSize.Small,
     'text-4xl md:text-5xl ml-3': props.size === BrandSize.Medium,
@@ -29,7 +29,9 @@ export const Brand: React.SFC<PublicProps> = props => {
     <BaseInteractive linkTo="https://slash.gg">
       <div className="flex items-center justify-center">
         <img src={logo} alt="slashgg" className={props.size} />
-        <h1 className={classes}>slashgg</h1>
+        <h1 className={classes} style={{ letterSpacing: -2 }}>
+          slashgg
+        </h1>
       </div>
     </BaseInteractive>
   );

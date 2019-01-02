@@ -9,10 +9,10 @@ type Props = RouteComponentProps;
 
 class RegisterPageComponent extends React.Component<Props> {
   public render() {
-    const params = queryString.parse(this.props.location.search);
+    const state = this.props.location.state;
     return (
       <Layout type={LayoutType.FullScreen}>
-        <Register returnUrl={params.returnUrl as string} />
+        <Register returnUrl={state.returnUrl} />
       </Layout>
     );
   }

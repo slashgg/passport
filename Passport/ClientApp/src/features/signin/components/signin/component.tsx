@@ -20,7 +20,7 @@ class SigninComponent extends React.Component<Props> {
           <div className="my-3">Trouble signing in?</div>
           <div className="flex flex-col">
             <Link
-              to={`/register?returnUrl=${this.props.returnUrl}`}
+              to={{ pathname: '/register', state: { returnUrl: this.props.returnUrl } }}
               className="text-primary-light hover:text-primary my-1"
             >
               Register
