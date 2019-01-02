@@ -12,7 +12,7 @@ class RegisterPageComponent extends React.Component<Props> {
     const state = this.props.location.state;
     return (
       <Layout type={LayoutType.FullScreen}>
-        <Register returnUrl={state.returnUrl} />
+        <Register returnUrl={state && state.returnUrl} />
       </Layout>
     );
   }

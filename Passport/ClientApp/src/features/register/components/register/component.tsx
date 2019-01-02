@@ -38,8 +38,12 @@ class RegisterComponent extends React.Component<Props> {
 
     this.props.invoke(payload).then((success: boolean) => {
       if (success) {
-        this.context.notify('You registration is successful! Please check your email for a welcome message!');
-        passport.history.push(returnUrl || '/');
+        if (returnUrl) {
+          window.location.href = returnUrl;
+        } else {
+          this.context.notify('You registration is successful! Please check your email for a welcome message!');
+          passport.history.push('/');
+        }
       }
     });
   };

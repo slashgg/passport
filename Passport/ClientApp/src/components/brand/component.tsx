@@ -2,8 +2,6 @@ import { BaseInteractive } from '@slashgg/diwali';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import logo from './logo.png';
-
 export enum BrandSize {
   Tiny = 'w-2 md:w-4',
   Small = 'w-4 md:w-8',
@@ -28,7 +26,7 @@ export const Brand: React.SFC<PublicProps> = props => {
   return (
     <BaseInteractive linkTo="https://slash.gg">
       <div className="flex items-center justify-center">
-        <img src={logo} alt="slashgg" className={props.size} />
+        <img src={require('./logo.png')} alt="slashgg" className={props.size} />
         <h1 className={classes} style={{ letterSpacing: -2 }}>
           slashgg
         </h1>

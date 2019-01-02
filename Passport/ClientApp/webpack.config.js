@@ -171,7 +171,10 @@ module.exports = function(env, argv) {
         }),
       ],
     };
-    config = Object.assign(config, { optimization });
+    const performance = {
+      hints: false,
+    };
+    config = Object.assign(config, { optimization, performance });
   }
 
   return config;
