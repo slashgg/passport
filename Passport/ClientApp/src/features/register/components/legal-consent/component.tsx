@@ -14,7 +14,7 @@ class LegalConsentComponent extends React.Component {
         By clicking Register, you indicate that you accept our{' '}
         <ExternalLink to={this.TOS}>Terms of Service</ExternalLink>,{' '}
         <ExternalLink to={this.CONDUCT}>Code of Conduct</ExternalLink> and{' '}
-        <ExternalLink to={this.PRIVACY}>Privacy</ExternalLink> policies.
+        <ExternalLink to={this.PRIVACY}>Privacy Policy</ExternalLink>.
       </Paragraph>
     );
   }
