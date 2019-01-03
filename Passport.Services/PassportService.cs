@@ -6,6 +6,7 @@ using Passport.Interfaces;
 using Passport.Models;
 using Passport.Utility;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Passport.Services
@@ -286,6 +287,11 @@ namespace Passport.Services
     {
       IdentityServer4.Models.AuthorizationRequest context = await interaction.GetAuthorizationContextAsync(returnUrl);
       return context != null && interaction.IsValidReturnUrl(returnUrl);
+    }
+
+    public Task<ServiceResult> AddExternalLink(string userid, ClaimsPrincipal externalPrincipal)
+    {
+      throw new NotImplementedException();
     }
   }
 }

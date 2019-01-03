@@ -1,4 +1,6 @@
+using IdentityServer4;
 using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Passport.Authentication;
 using Passport.Interfaces;
 using Passport.Models;
 using Passport.Models.Context;
@@ -114,13 +117,49 @@ namespace Passport
         .AddInMemoryClients(InMemoryClients.Clients)
         .AddAspNetIdentity<PassportUser>();
 
+
       services.AddAuthentication("Bearer")
-              .AddIdentityServerAuthentication(options =>
-              {
-                options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
-                options.RequireHttpsMetadata = Production;
-                options.ApiName = "@slashgg/passport";
-              });
+        .AddIdentityServerAuthentication(options =>
+        {
+          options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
+          options.RequireHttpsMetadata = Production;
+          options.ApiName = "@slashgg/passport";
+        })
+        .AddOAuth("battlenet", options =>
+        {
+          options.ClientId = "ccf6343d38f64c968eebcd115df5adfa";
+          options.ClientSecret = "0TFLHANcL6OsRRXEc7e3qe9peqD75Z2I";
+          options.AuthorizationEndpoint = "https://us.battle.net/oauth/authorize";
+          options.TokenEndpoint = "https://us.battle.net/oauth/token";
+          options.UserInformationEndpoint = "https://us.battle.net/oauth/userinfo";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.CallbackPath = "/battlenet-callback";
+          options.ClaimActions.MapBattleNetClaims();
+
+          options.Events = new OAuthEvents
+          {
+            OnCreatingTicket = DefaultExternalHandler.TicketHandler
+          };
+        })
+        .AddOAuth("discord", options =>
+        {
+          options.ClientId = "530508092945727489";
+          options.ClientSecret = "Z1rxb3p_O_00QXutuknbCpa6ThGt8Ouw";
+          options.AuthorizationEndpoint = "https://discordapp.com/api/oauth2/authorize";
+          options.TokenEndpoint = "https://discordapp.com/api/oauth2/token";
+          options.UserInformationEndpoint = "https://discordapp.com/api/users/@me";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.Scope.Add("identify");
+          options.Scope.Add("guilds");
+          options.Scope.Add("guilds.join");
+          options.CallbackPath = "/discord-callback";
+          options.ClaimActions.MapDiscordClaims();
+
+          options.Events = new OAuthEvents
+          {
+            OnCreatingTicket = DefaultExternalHandler.TicketHandler
+          };
+        });
 
       services.AddAuthorization(auth =>
       {
