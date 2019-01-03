@@ -24,8 +24,12 @@ namespace Passport.Areas.v1.Controllers
     [HttpGet]
     public async Task<OperationResult> Index([FromQuery] string email)
     {
-      var token = await passportService.GeneratePasswordResetTokenAsync(email);
-      await emailService.SendPasswordResetEmailAsync(token, email);
+      string token = await passportService.GeneratePasswordResetTokenAsync(email);
+
+      if (!string.IsNullOrEmpty(token))
+      {
+        await emailService.SendPasswordResetEmailAsync(token, email);
+      }
 
       // We say Ok no matter what. We don't reveal that a user doesn't exist.
       return Ok();
@@ -40,7 +44,7 @@ namespace Passport.Areas.v1.Controllers
         return Ok();
       }
 
-      foreach (var error in result.Errors)
+      foreach (ServiceResult.Error error in result.Errors)
       {
         ModelState.AddModelError(error.Key, error.Message);
       }

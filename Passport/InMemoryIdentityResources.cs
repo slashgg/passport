@@ -8,7 +8,8 @@ namespace Passport
     public static List<IdentityResource> IdentityResources { get; } = new List<IdentityResource>
     {
       new IdentityResources.OpenId(),
-      new IdentityResources.Profile()
+      new IdentityResources.Profile(),
+      new IdentityResources.Email(),
     };
   }
 }

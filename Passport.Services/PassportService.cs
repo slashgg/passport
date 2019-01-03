@@ -38,6 +38,11 @@ namespace Passport.Services
     public async Task<string> GeneratePasswordResetTokenAsync(string email)
     {
       PassportUser user = await userManager.FindByEmailAsync(email);
+      if (user == null)
+      {
+        return string.Empty;
+      }
+
       return await userManager.GeneratePasswordResetTokenAsync(user);
     }
 
@@ -93,7 +98,7 @@ namespace Passport.Services
 
       if (identityResult.Succeeded)
       {
-        var userClient = new Passport.Utility.Clients.Alexandria.UserProfileClient(new System.Net.Http.HttpClient());
+        Utility.Clients.Alexandria.UserProfileClient userClient = new Passport.Utility.Clients.Alexandria.UserProfileClient(new System.Net.Http.HttpClient());
         await userClient.CreateProfileAsync(new Utility.Clients.Alexandria.UserProfileCreate { Id = Guid.Parse(user.Id), Email = model.Email, DisplayName = user.UserName });
       }
 
@@ -237,8 +242,8 @@ namespace Passport.Services
 
     public async Task<ServiceResult> UpdateUserAccount(Guid userId, DTOs.UpdateAccount account)
     {
-      var result = new ServiceResult();
-      var user = await userManager.FindByIdAsync(userId.ToString());
+      ServiceResult result = new ServiceResult();
+      PassportUser user = await userManager.FindByIdAsync(userId.ToString());
       if (user == null)
       {
         result.Errors.Add(new ServiceResult.Error
@@ -252,7 +257,7 @@ namespace Passport.Services
       }
 
       user.Update(account.Email, account.UserName);
-      var updateResult = await userManager.UpdateAsync(user);
+      IdentityResult updateResult = await userManager.UpdateAsync(user);
 
       if (!updateResult.Succeeded)
       {
@@ -262,7 +267,7 @@ namespace Passport.Services
           Message = Errors.UpdateFailed,
         });
 
-        foreach (var error in updateResult.Errors)
+        foreach (IdentityError error in updateResult.Errors)
         {
           result.Errors.Add(new ServiceResult.Error
           {
