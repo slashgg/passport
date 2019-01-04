@@ -1,11 +1,15 @@
-﻿using IdentityServer4.Events;
+﻿using IdentityModel;
+using IdentityServer4.Events;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Passport.DTOs;
 using Passport.Interfaces;
 using Passport.Models;
 using Passport.Utility;
+using Passport.Utility.Authentication;
 using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -289,9 +293,96 @@ namespace Passport.Services
       return context != null && interaction.IsValidReturnUrl(returnUrl);
     }
 
-    public Task<ServiceResult> AddExternalLink(string userid, ClaimsPrincipal externalPrincipal)
+    public async Task<ServiceResult> AddExternalLink(string userId, ClaimsPrincipal externalPrincipal)
     {
-      throw new NotImplementedException();
+      var result = new ServiceResult();
+
+      Claim externalIdClaim = externalPrincipal.FindFirst(JwtClaimTypes.Subject) ?? externalPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+
+      if (externalIdClaim == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.ExternalIdNotFound),
+          Message = Errors.ExternalIdNotFound,
+        });
+        result.Code = 500;
+
+        return result;
+      }
+
+
+      AuthenticationProperties signInProps = new AuthenticationProperties();
+      PassportUser user = await userManager.FindByIdAsync(userId);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound,
+        });
+        result.Code = 404;
+      }
+
+      var provider = externalPrincipal.Identity.AuthenticationType;
+      System.Collections.Generic.IList<UserLoginInfo> logins = await userManager.GetLoginsAsync(user);
+
+      if (!logins.Any(l => l.LoginProvider.Equals(provider) && l.ProviderKey.Equals(externalIdClaim.Value)))
+      {
+        string displayName = string.Empty;
+        string linkClaimType = null;
+
+        switch (provider)
+        {
+          case "battlenet":
+            displayName = externalPrincipal.FindFirstValue(ExternalClaimTypes.BattleNet.Name);
+            linkClaimType = ExternalClaimTypes.BattleNet.DisplayName;
+            break;
+          case "discord":
+            string username = externalPrincipal.FindFirstValue(ExternalClaimTypes.Discord.Name);
+            string discriminator = externalPrincipal.FindFirstValue(ExternalClaimTypes.Discord.Discriminator);
+            displayName = $"{username}#{discriminator}";
+            linkClaimType = ExternalClaimTypes.Discord.DisplayName;
+            break;
+        }
+
+        IdentityResult identityResult = await userManager.AddLoginAsync(user, new UserLoginInfo(provider, externalIdClaim.Value, displayName));
+        if (!identityResult.Succeeded)
+        {
+          foreach (var error in result.Errors)
+          {
+            result.Errors.Add(new ServiceResult.Error
+            {
+              Key = error.Key,
+              Message = error.Message,
+            });
+          }
+
+          result.Code = 500;
+          return result;
+        }
+
+        if (!string.IsNullOrEmpty(linkClaimType) && !string.IsNullOrEmpty(displayName))
+        {
+          identityResult = await userManager.AddClaimAsync(user, new Claim(linkClaimType, displayName));
+          foreach (var error in result.Errors)
+          {
+            result.Errors.Add(new ServiceResult.Error
+            {
+              Key = error.Key,
+              Message = error.Message,
+            });
+          }
+
+          result.Code = 500;
+          return result;
+        }
+      }
+
+      await events.RaiseAsync(new UserLoginSuccessEvent(provider, externalIdClaim.Value, userId, user.UserName));
+      await signInManager.SignInAsync(user, true);
+
+      return result;
     }
   }
 }

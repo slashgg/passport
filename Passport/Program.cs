@@ -22,6 +22,7 @@ namespace Passport
           var isProduction = hosting.HostingEnvironment.IsProduction();
           var secretsToFetch = new List<string>();
           secretsToFetch.Add("SendGrid");
+          secretsToFetch.Add("OAuthClients");
 
           if (isProduction)
           {

@@ -1,6 +1,7 @@
 ﻿using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
+using Passport.Utility.Authentication;
 
 namespace Passport.Authentication
 {

@@ -40,7 +40,6 @@ namespace Passport
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddTransient<IPassportService, PassportService>();
-      services.AddTransient<IProfileService, ProfileService>();
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
       {
@@ -117,21 +116,21 @@ namespace Passport
         .AddInMemoryIdentityResources(InMemoryIdentityResources.IdentityResources)
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
         .AddInMemoryClients(InMemoryClients.Clients)
-        .AddAspNetIdentity<PassportUser>()
-        .AddProfileService<ProfileService>();
+        .AddAspNetIdentity<PassportUser>();
 
 
-      services.AddAuthentication("Bearer")
+      services
+        .AddAuthentication("Bearer")
         .AddIdentityServerAuthentication(options =>
         {
-          options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
+          options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:52215";
           options.RequireHttpsMetadata = Production;
           options.ApiName = "@slashgg/passport";
         })
         .AddOAuth("battlenet", options =>
         {
-          options.ClientId = "ccf6343d38f64c968eebcd115df5adfa";
-          options.ClientSecret = "0TFLHANcL6OsRRXEc7e3qe9peqD75Z2I";
+          options.ClientId = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientId");
+          options.ClientSecret = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientSecret");
           options.AuthorizationEndpoint = "https://us.battle.net/oauth/authorize";
           options.TokenEndpoint = "https://us.battle.net/oauth/token";
           options.UserInformationEndpoint = "https://us.battle.net/oauth/userinfo";
@@ -146,8 +145,8 @@ namespace Passport
         })
         .AddOAuth("discord", options =>
         {
-          options.ClientId = "530508092945727489";
-          options.ClientSecret = "Z1rxb3p_O_00QXutuknbCpa6ThGt8Ouw";
+          options.ClientId = Configuration.GetValue<string>("OAuthClients:Discord:ClientId");
+          options.ClientSecret = Configuration.GetValue<string>("OAuthClients:Discord:ClientSecret");
           options.AuthorizationEndpoint = "https://discordapp.com/api/oauth2/authorize";
           options.TokenEndpoint = "https://discordapp.com/api/oauth2/token";
           options.UserInformationEndpoint = "https://discordapp.com/api/users/@me";

@@ -60,13 +60,10 @@ namespace Passport
         AllowAccessTokensViaBrowser = true,
         RedirectUris = new HashSet<string>
         {
-          "https://dt4zju0m7ok3d.cloudfront.net/signin-callback",
-          "http://localhost:3000/signin-callback",
-          "http://localhost:3000/silent-callback",
-          "http://staging.slash.gg.s3-website-us-east-1.amazonaws.com/signin-callback",
-          "https://slash.gg/signin-callback",
-          "https://slash.gg/silent-callback",
-          "https://slash.gg/signout-callback",
+          "http://localhost:3000/oauth/signin-callback",
+          "http://localhost:3000/oauth/silent-callback",
+          "https://slash.gg/oauth/signin-callback",
+          "https://slash.gg/oauth/silent-callback",
         },
         RequireConsent = false,
         AllowedScopes = new HashSet<string>
@@ -74,7 +71,8 @@ namespace Passport
           "openid",
           "profile",
           "email",
-          "@slashgg/alexandria.full_access"
+          "@slashgg/alexandria.full_access",
+          "@slashgg/passport.links"
         },
         AllowedCorsOrigins = new HashSet<string>
         {
@@ -85,11 +83,8 @@ namespace Passport
         },
         PostLogoutRedirectUris = new HashSet<string>
         {
-          "https://slash.gg",
-          "https://dt4zju0m7ok3d.cloudfront.net/",
-          "http://staging.slash.gg.s3-website-us-east-1.amazonaws.com/",
-          "http://localhost:3000",
-          "http://localhost:3000/signout-callback",
+          "https://slash.gg/oauth/signout-callback",
+          "http://localhost:3000/oauth/signout-callback",
         }
       },
       new Client

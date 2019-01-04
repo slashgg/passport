@@ -1,4 +1,5 @@
 ﻿using IdentityServer4.Models;
+using Passport.Utility.Authentication;
 using System.Collections.Generic;
 
 namespace Passport
@@ -10,6 +11,15 @@ namespace Passport
       new IdentityResources.OpenId(),
       new IdentityResources.Profile(),
       new IdentityResources.Email(),
+      new IdentityResource
+      {
+        Name = "@slashgg/passport.links",
+        UserClaims =
+        {
+          ExternalClaimTypes.BattleNet.DisplayName,
+          ExternalClaimTypes.Discord.DisplayName
+        }
+      }
     };
   }
 }

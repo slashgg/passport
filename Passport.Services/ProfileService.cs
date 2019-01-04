@@ -1,7 +1,9 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Passport.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,22 +24,24 @@ namespace Passport.Services
 
       if (user != null)
       {
-        System.Collections.Generic.IEnumerable<string> scopes = context.RequestedResources.ToScopeNames();
+        IEnumerable<string> scopes = context.RequestedResources.ToScopeNames();
 
         if (scopes.Any(s => s.Equals("email")))
         {
-          context.IssuedClaims.Add(new Claim(ClaimTypes.Email, user.Email));
+          context.IssuedClaims.Add(new Claim("email", user.Email));
         }
 
-        if (scopes.Any(s => s.Equals("profile")))
+        if (scopes.Any(s => s.Equals("phone")))
         {
-          context.IssuedClaims.Add(new Claim(ClaimTypes.Name, user.UserName));
-          System.Collections.Generic.IList<UserLoginInfo> logins = await manager.GetLoginsAsync(user);
+          context.IssuedClaims.Add(new Claim("phone", user.PhoneNumber));
+        }
 
-          foreach (UserLoginInfo login in logins)
-          {
-            context.IssuedClaims.Add(new Claim(login.LoginProvider, login.ProviderDisplayName));
-          }
+        context.IssuedClaims.Add(new Claim("name", user.UserName));
+
+        IList<UserLoginInfo> logins = await manager.GetLoginsAsync(user);
+        foreach (UserLoginInfo login in logins)
+        {
+          context.IssuedClaims.Add(new Claim(login.LoginProvider, login.ProviderDisplayName));
         }
       }
     }
