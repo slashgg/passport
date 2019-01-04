@@ -1,5 +1,6 @@
 using IdentityServer4;
 using IdentityServer4.AccessTokenValidation;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,7 @@ namespace Passport
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddTransient<IPassportService, PassportService>();
+      services.AddTransient<IProfileService, ProfileService>();
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
       {
@@ -115,7 +117,8 @@ namespace Passport
         .AddInMemoryIdentityResources(InMemoryIdentityResources.IdentityResources)
         .AddInMemoryApiResources(Configuration.GetSection("Identity:Resources"))
         .AddInMemoryClients(InMemoryClients.Clients)
-        .AddAspNetIdentity<PassportUser>();
+        .AddAspNetIdentity<PassportUser>()
+        .AddProfileService<ProfileService>();
 
 
       services.AddAuthentication("Bearer")
