@@ -32,6 +32,7 @@ namespace Passport.Areas.v1.Controllers
         Items =
         {
           { "sub", User.FindFirst("sub").Value },
+          { "scheme", scheme },
           { "redirectUri", redirectUri }
         }
       });
@@ -48,14 +49,25 @@ namespace Passport.Areas.v1.Controllers
         return Unauthorized();
       }
 
-      string userId = User.FindFirst("sub")?.Value;
+      string userId;
+      if (!authResult.Properties.Items.TryGetValue("sub", out userId))
+      {
+        return BadRequest();
+      }
+
       string redirectUri;
       if (!authResult.Properties.Items.TryGetValue("redirectUri", out redirectUri))
       {
         return BadRequest();
       }
 
-      var result = await passport.AddExternalLink(userId, authResult.Principal);
+      string scheme;
+      if (!authResult.Properties.Items.TryGetValue("scheme", out scheme))
+      {
+        return BadRequest();
+      }
+
+      var result = await passport.AddExternalLink(userId, scheme, authResult.Principal);
       if (!result.Successful)
       {
         logger.LogError($"Failed to link account {userId}", result.Errors);

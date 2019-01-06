@@ -2,6 +2,7 @@ using IdentityServer4;
 using IdentityServer4.AccessTokenValidation;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Passport.Authentication;
 using Passport.Interfaces;
 using Passport.Models;
@@ -165,6 +167,21 @@ namespace Passport
           {
             OnCreatingTicket = DefaultExternalHandler.TicketHandler
           };
+        })
+        .AddOpenIdConnect("twitch", options =>
+        {
+          options.ClientId = "xdnksnbftjp7yo8hdxqd68afeg28wk";
+          options.ClientSecret = "il9v52ql9y8ux3i8rzt9kki3wokpmc";
+          options.Authority = "https://id.twitch.tv/oauth2";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.ResponseType = OpenIdConnectResponseType.Code;
+          options.GetClaimsFromUserInfoEndpoint = true;
+          options.CallbackPath = "/twitch-callback";
+          
+          // We don't want to request the profile scope
+          options.Scope.Clear();
+
+          options.Scope.Add("openid");
         });
 
       services.AddAuthorization(auth =>

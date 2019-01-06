@@ -297,7 +297,7 @@ namespace Passport.Services
       return context != null && interaction.IsValidReturnUrl(returnUrl);
     }
 
-    public async Task<ServiceResult> AddExternalLink(string userId, ClaimsPrincipal externalPrincipal)
+    public async Task<ServiceResult> AddExternalLink(string userId, string scheme, ClaimsPrincipal externalPrincipal)
     {
       var result = new ServiceResult();
 
@@ -316,13 +316,16 @@ namespace Passport.Services
       }
 
       UserProfileCreateConnection dto = null;
-      switch (externalPrincipal.Identity.AuthenticationType)
+      switch (scheme)
       {
         case "battle.net":
           dto = CreateBattlenetConnectionDto(userId, externalPrincipal);
           break;
         case "discord":
           dto = CreateDiscordConnectionDto(userId, externalPrincipal);
+          break;
+        case "twitch":
+          dto = CreateTwitchConnectionDto(userId, externalPrincipal);
           break;
       }
 
@@ -354,6 +357,24 @@ namespace Passport.Services
       }
 
       return result;
+    }
+
+    private UserProfileCreateConnection CreateTwitchConnectionDto(string userId, ClaimsPrincipal subject)
+    {
+      if (!subject.HasClaim(claim => claim.Type.Equals(ExternalClaimTypes.Twitch.Name)) ||
+          !subject.HasClaim(claim => claim.Type.Equals(ClaimTypes.NameIdentifier)))
+      {
+        return null;
+      }
+
+      var dto = new UserProfileCreateConnection();
+
+      dto.Name = subject.FindFirstValue(ExternalClaimTypes.Twitch.Name);
+      dto.Provider = ExternalProvider.Twitch;
+      dto.ExternalId = subject.FindFirstValue(ClaimTypes.NameIdentifier);
+      dto.UserId = userId;
+
+      return dto;
     }
 
     private UserProfileCreateConnection CreateDiscordConnectionDto(string userId, ClaimsPrincipal subject)

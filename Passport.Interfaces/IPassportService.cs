@@ -16,6 +16,6 @@ namespace Passport.Interfaces
     Task<string> GenerateEmailVerificationTokenAsync(string emailAddress);
     Task<ServiceResult> VerifyEmailAsync(VerifyEmail model);
     Task<ServiceResult> UpdateUserAccount(Guid userId, DTOs.UpdateAccount account);
-    Task<ServiceResult> AddExternalLink(string userid, ClaimsPrincipal externalPrincipal);
+    Task<ServiceResult> AddExternalLink(string userid, string scheme, ClaimsPrincipal externalPrincipal);
   }
 }

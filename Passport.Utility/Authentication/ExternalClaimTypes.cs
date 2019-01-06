@@ -18,5 +18,10 @@
       public static string Discriminator { get; } = $"{Urn}:discriminator";
       public static string DisplayName { get; } = $"{Urn}:{PreferredUsername}";
     }
+
+    public static class Twitch
+    {
+      public static string Name { get; } = "preferred_username";
+    }
   }
 }
