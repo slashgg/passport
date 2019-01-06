@@ -120,6 +120,9 @@
   <data name="EmailAddressInUse" xml:space="preserve">
     <value>Email address is in use.</value>
   </data>
+  <data name="ExternalConnectionFailed" xml:space="preserve">
+    <value>Failed to create external connection.</value>
+  </data>
   <data name="ExternalIdNotFound" xml:space="preserve">
     <value>External account linking failed.</value>
   </data>

@@ -22,6 +22,8 @@ using Passport.Services;
 using Passport.Utility.Configuration;
 using SendGrid;
 using Svalbard;
+using System;
+using System.Net.Http;
 
 namespace Passport
 {
@@ -39,6 +41,8 @@ namespace Passport
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddScoped<IBackchannelTokenProvider, BackchannelTokenProvider>();
+      services.AddTransient<IClientFactory, ClientFactory>();
       services.AddTransient<IPassportService, PassportService>();
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
@@ -127,7 +131,7 @@ namespace Passport
           options.RequireHttpsMetadata = Production;
           options.ApiName = "@slashgg/passport";
         })
-        .AddOAuth("battlenet", options =>
+        .AddOAuth("battle.net", options =>
         {
           options.ClientId = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientId");
           options.ClientSecret = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientSecret");

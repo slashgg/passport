@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Passport.Infrastructure;
 using Passport.Interfaces;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace Passport.Areas.v1.Controllers
     }
 
     [HttpGet("[area]/external/{scheme}")]
-    public async Task Index([FromRoute] string scheme)
+    public async Task Index([FromRoute] string scheme, [FromQuery] string redirectUri)
     {
 
       await HttpContext.ChallengeAsync(scheme, new AuthenticationProperties
@@ -31,13 +32,15 @@ namespace Passport.Areas.v1.Controllers
         Items =
         {
           { "sub", User.FindFirst("sub").Value },
+          { "redirectUri", redirectUri }
         }
       });
     }
 
     [AllowAnonymous]
+    [BackchannelCredentials]
     [HttpGet("external-callback")]
-    public async Task<StatusCodeResult> Callback()
+    public async Task<IActionResult> Callback()
     {
       AuthenticateResult authResult = await HttpContext.AuthenticateAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
       if (authResult?.Succeeded != true)
@@ -46,6 +49,11 @@ namespace Passport.Areas.v1.Controllers
       }
 
       string userId = User.FindFirst("sub")?.Value;
+      string redirectUri;
+      if (!authResult.Properties.Items.TryGetValue("redirectUri", out redirectUri))
+      {
+        return BadRequest();
+      }
 
       var result = await passport.AddExternalLink(userId, authResult.Principal);
       if (!result.Successful)
@@ -57,7 +65,7 @@ namespace Passport.Areas.v1.Controllers
       // Sign out of the temp account
       await HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
 
-      return Ok();
+      return Redirect(redirectUri);
     }
   }
 }

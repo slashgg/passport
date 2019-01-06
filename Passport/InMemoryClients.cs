@@ -46,7 +46,7 @@ namespace Passport
         {
           "openid",
           "profile",
-          "@slashgg/alexandria.full_access"
+          "@slashgg/alexandria.backchannel"
         }
       },
       new Client
@@ -72,7 +72,6 @@ namespace Passport
           "profile",
           "email",
           "@slashgg/alexandria.full_access",
-          "@slashgg/passport.links"
         },
         AllowedCorsOrigins = new HashSet<string>
         {
@@ -85,6 +84,39 @@ namespace Passport
         {
           "https://slash.gg/oauth/signout-callback",
           "http://localhost:3000/oauth/signout-callback",
+        }
+      },
+      new Client
+      {
+        Enabled = true,
+        ClientId = "slashgg-alexandria-swagger",
+        AllowedGrantTypes = new HashSet<string>
+        {
+          GrantType.Implicit,
+        },
+        AllowAccessTokensViaBrowser = true,
+        RedirectUris = new HashSet<string>
+        {
+          "http://localhost:5000/swagger/oauth2-redirect.html",
+          "https://api.slash.gg/swagger/oauth2-redirect.html",
+        },
+        RequireConsent = false,
+        AllowedScopes = new HashSet<string>
+        {
+          "openid",
+          "profile",
+          "email",
+          "@slashgg/alexandria.full_access",
+        },
+        AllowedCorsOrigins = new HashSet<string>
+        {
+          "https://api.slash.gg",
+          "http://localhost:5000",
+        },
+        PostLogoutRedirectUris = new HashSet<string>
+        {
+          "https://api.slash.gg/swagger/index.html",
+          "http://localhost:5000/swagger/index.html",
         }
       },
       new Client

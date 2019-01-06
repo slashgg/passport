@@ -10,16 +10,7 @@ namespace Passport
     {
       new IdentityResources.OpenId(),
       new IdentityResources.Profile(),
-      new IdentityResources.Email(),
-      new IdentityResource
-      {
-        Name = "@slashgg/passport.links",
-        UserClaims =
-        {
-          ExternalClaimTypes.BattleNet.DisplayName,
-          ExternalClaimTypes.Discord.DisplayName
-        }
-      }
+      new IdentityResources.Email()
     };
   }
 }
