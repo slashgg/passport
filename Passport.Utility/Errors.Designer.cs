@@ -70,6 +70,24 @@ namespace Passport.Utility {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create external connection..
+        /// </summary>
+        public static string ExternalConnectionFailed {
+            get {
+                return ResourceManager.GetString("ExternalConnectionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External account linking failed..
+        /// </summary>
+        public static string ExternalIdNotFound {
+            get {
+                return ResourceManager.GetString("ExternalIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid return url..
         /// </summary>
         public static string InvalidReturnUrl {

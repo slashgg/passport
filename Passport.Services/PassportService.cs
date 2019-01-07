@@ -1,11 +1,17 @@
-﻿using IdentityServer4.Events;
+﻿using IdentityModel;
+using IdentityServer4.Events;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Passport.DTOs;
 using Passport.Interfaces;
 using Passport.Models;
 using Passport.Utility;
+using Passport.Utility.Authentication;
+using Passport.Utility.Clients.Alexandria;
 using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Passport.Services
@@ -16,17 +22,20 @@ namespace Passport.Services
     private readonly SignInManager<PassportUser> signInManager;
     private readonly IIdentityServerInteractionService interaction;
     private readonly IEventService events;
+    private readonly IClientFactory clientFactory;
 
     public PassportService(
       UserManager<PassportUser> userManager,
       SignInManager<PassportUser> signInManager,
       IIdentityServerInteractionService interaction,
-      IEventService events)
+      IEventService events,
+      IClientFactory clientFactory)
     {
       this.userManager = userManager;
       this.signInManager = signInManager;
       this.interaction = interaction;
       this.events = events;
+      this.clientFactory = clientFactory;
     }
 
     public async Task<string> GenerateEmailVerificationTokenAsync(string emailAddress)
@@ -98,8 +107,8 @@ namespace Passport.Services
 
       if (identityResult.Succeeded)
       {
-        Utility.Clients.Alexandria.UserProfileClient userClient = new Passport.Utility.Clients.Alexandria.UserProfileClient(new System.Net.Http.HttpClient());
-        await userClient.CreateProfileAsync(new Utility.Clients.Alexandria.UserProfileCreate { Id = Guid.Parse(user.Id), Email = model.Email, DisplayName = user.UserName });
+        var client = clientFactory.GetProfileClient();
+        await client.CreateProfileAsync(new UserProfileCreate { Id = Guid.Parse(user.Id), Email = model.Email, DisplayName = user.UserName });
       }
 
       return result;
@@ -286,6 +295,123 @@ namespace Passport.Services
     {
       IdentityServer4.Models.AuthorizationRequest context = await interaction.GetAuthorizationContextAsync(returnUrl);
       return context != null && interaction.IsValidReturnUrl(returnUrl);
+    }
+
+    public async Task<ServiceResult> AddExternalLink(string userId, string scheme, ClaimsPrincipal externalPrincipal)
+    {
+      var result = new ServiceResult();
+
+      AuthenticationProperties signInProps = new AuthenticationProperties();
+      PassportUser user = await userManager.FindByIdAsync(userId);
+      if (user == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.UserNotFound),
+          Message = Errors.UserNotFound,
+        });
+        result.Code = 404;
+
+        return result;
+      }
+
+      UserProfileCreateConnection dto = null;
+      switch (scheme)
+      {
+        case "battle.net":
+          dto = CreateBattlenetConnectionDto(userId, externalPrincipal);
+          break;
+        case "discord":
+          dto = CreateDiscordConnectionDto(userId, externalPrincipal);
+          break;
+        case "twitch":
+          dto = CreateTwitchConnectionDto(userId, externalPrincipal);
+          break;
+      }
+
+      if (dto == null)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.ExternalIdNotFound),
+          Message = Errors.ExternalIdNotFound,
+        });
+        result.Code = 400;
+
+        return result;
+      }
+
+      try
+      {
+        var client = clientFactory.GetProfileConnectionClient();
+        await client.CreateConnectionAsync(dto);
+      }
+      catch (Exception)
+      {
+        result.Errors.Add(new ServiceResult.Error
+        {
+          Key = nameof(Errors.ExternalConnectionFailed),
+          Message = Errors.ExternalConnectionFailed,
+        });
+        result.Code = 500;
+      }
+
+      return result;
+    }
+
+    private UserProfileCreateConnection CreateTwitchConnectionDto(string userId, ClaimsPrincipal subject)
+    {
+      if (!subject.HasClaim(claim => claim.Type.Equals(ExternalClaimTypes.Twitch.Name)) ||
+          !subject.HasClaim(claim => claim.Type.Equals(ClaimTypes.NameIdentifier)))
+      {
+        return null;
+      }
+
+      var dto = new UserProfileCreateConnection();
+
+      dto.Name = subject.FindFirstValue(ExternalClaimTypes.Twitch.Name);
+      dto.Provider = ExternalProvider.Twitch;
+      dto.ExternalId = subject.FindFirstValue(ClaimTypes.NameIdentifier);
+      dto.UserId = userId;
+
+      return dto;
+    }
+
+    private UserProfileCreateConnection CreateDiscordConnectionDto(string userId, ClaimsPrincipal subject)
+    {
+      if (!subject.HasClaim(claim => claim.Type.Equals(ExternalClaimTypes.Discord.Name)) ||
+          !subject.HasClaim(claim => claim.Type.Equals(ExternalClaimTypes.Discord.Discriminator)) ||
+          !subject.HasClaim(claim => claim.Type.Equals(JwtClaimTypes.Subject)))
+      {
+        return null;
+      }
+
+      var dto = new UserProfileCreateConnection();
+
+      dto.Name = subject.FindFirstValue(ExternalClaimTypes.Discord.Name) + '#' + subject.FindFirstValue(ExternalClaimTypes.Discord.Discriminator);
+      dto.Provider = ExternalProvider.Discord;
+      dto.ExternalId = subject.FindFirstValue(JwtClaimTypes.Subject);
+      dto.UserId = userId;
+
+      return dto;
+    }
+
+    private UserProfileCreateConnection CreateBattlenetConnectionDto(string userId, ClaimsPrincipal subject)
+    {
+      if (!subject.HasClaim(claim => claim.Type.Equals(ExternalClaimTypes.BattleNet.Name)) ||
+          !subject.HasClaim(claim => claim.Type.Equals(JwtClaimTypes.Subject)))
+      {
+        return null;
+      }
+
+      var dto = new UserProfileCreateConnection();
+
+      dto.Name = subject.FindFirstValue(ExternalClaimTypes.BattleNet.Name);
+      dto.Provider = ExternalProvider.BattleNet;
+      dto.ExternalId = subject.FindFirstValue(JwtClaimTypes.Subject);
+      dto.UserId = userId;
+
+      return dto;
     }
   }
 }

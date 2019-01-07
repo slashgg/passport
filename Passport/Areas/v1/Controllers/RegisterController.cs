@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Passport.DTOs;
+using Passport.Infrastructure;
 using Passport.Interfaces;
 using Svalbard;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Passport.Areas.v1.Controllers
     }
 
     [HttpPost]
+    [BackchannelCredentials]
     public async Task<OperationResult> Index([FromBody] Register model)
     {
       if (!ModelState.IsValid)

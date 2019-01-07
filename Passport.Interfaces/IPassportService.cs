@@ -1,6 +1,7 @@
 ﻿using Passport.DTOs;
 using Passport.Utility;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Passport.Interfaces
@@ -15,5 +16,6 @@ namespace Passport.Interfaces
     Task<string> GenerateEmailVerificationTokenAsync(string emailAddress);
     Task<ServiceResult> VerifyEmailAsync(VerifyEmail model);
     Task<ServiceResult> UpdateUserAccount(Guid userId, DTOs.UpdateAccount account);
+    Task<ServiceResult> AddExternalLink(string userid, string scheme, ClaimsPrincipal externalPrincipal);
   }
 }

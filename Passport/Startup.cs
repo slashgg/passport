@@ -1,4 +1,8 @@
+using IdentityServer4;
 using IdentityServer4.AccessTokenValidation;
+using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +15,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Passport.Authentication;
 using Passport.Interfaces;
 using Passport.Models;
 using Passport.Models.Context;
@@ -18,6 +24,8 @@ using Passport.Services;
 using Passport.Utility.Configuration;
 using SendGrid;
 using Svalbard;
+using System;
+using System.Net.Http;
 
 namespace Passport
 {
@@ -35,6 +43,8 @@ namespace Passport
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddScoped<IBackchannelTokenProvider, BackchannelTokenProvider>();
+      services.AddTransient<IClientFactory, ClientFactory>();
       services.AddTransient<IPassportService, PassportService>();
       services.AddTransient<IEmailService, EmailService>();
       services.AddTransient<ISendGridClient>(provider =>
@@ -114,13 +124,65 @@ namespace Passport
         .AddInMemoryClients(InMemoryClients.Clients)
         .AddAspNetIdentity<PassportUser>();
 
-      services.AddAuthentication("Bearer")
-              .AddIdentityServerAuthentication(options =>
-              {
-                options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:62978";
-                options.RequireHttpsMetadata = Production;
-                options.ApiName = "@slashgg/passport";
-              });
+
+      services
+        .AddAuthentication("Bearer")
+        .AddIdentityServerAuthentication(options =>
+        {
+          options.Authority = Production ? "https://passport.slash.gg" : "http://localhost:52215";
+          options.RequireHttpsMetadata = Production;
+          options.ApiName = "@slashgg/passport";
+        })
+        .AddOAuth("battle.net", options =>
+        {
+          options.ClientId = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientId");
+          options.ClientSecret = Configuration.GetValue<string>("OAuthClients:BattleNet:ClientSecret");
+          options.AuthorizationEndpoint = "https://us.battle.net/oauth/authorize";
+          options.TokenEndpoint = "https://us.battle.net/oauth/token";
+          options.UserInformationEndpoint = "https://us.battle.net/oauth/userinfo";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.CallbackPath = "/battlenet-callback";
+          options.ClaimActions.MapBattleNetClaims();
+
+          options.Events = new OAuthEvents
+          {
+            OnCreatingTicket = DefaultExternalHandler.TicketHandler
+          };
+        })
+        .AddOAuth("discord", options =>
+        {
+          options.ClientId = Configuration.GetValue<string>("OAuthClients:Discord:ClientId");
+          options.ClientSecret = Configuration.GetValue<string>("OAuthClients:Discord:ClientSecret");
+          options.AuthorizationEndpoint = "https://discordapp.com/api/oauth2/authorize";
+          options.TokenEndpoint = "https://discordapp.com/api/oauth2/token";
+          options.UserInformationEndpoint = "https://discordapp.com/api/users/@me";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.Scope.Add("identify");
+          options.Scope.Add("guilds");
+          options.Scope.Add("guilds.join");
+          options.CallbackPath = "/discord-callback";
+          options.ClaimActions.MapDiscordClaims();
+
+          options.Events = new OAuthEvents
+          {
+            OnCreatingTicket = DefaultExternalHandler.TicketHandler
+          };
+        })
+        .AddOpenIdConnect("twitch", options =>
+        {
+          options.ClientId = "xdnksnbftjp7yo8hdxqd68afeg28wk";
+          options.ClientSecret = "il9v52ql9y8ux3i8rzt9kki3wokpmc";
+          options.Authority = "https://id.twitch.tv/oauth2";
+          options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+          options.ResponseType = OpenIdConnectResponseType.Code;
+          options.GetClaimsFromUserInfoEndpoint = true;
+          options.CallbackPath = "/twitch-callback";
+          
+          // We don't want to request the profile scope
+          options.Scope.Clear();
+
+          options.Scope.Add("openid");
+        });
 
       services.AddAuthorization(auth =>
       {
