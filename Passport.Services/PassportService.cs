@@ -10,7 +10,6 @@ using Passport.Utility;
 using Passport.Utility.Authentication;
 using Passport.Utility.Clients.Alexandria;
 using System;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
