@@ -19,7 +19,7 @@ namespace Passport.Areas.v1.Controllers
     }
 
     [HttpPut("{accountId}")]
-    [Authorize(Policy = "Backchannel")]
+    [Authorize("Backchannel")]
     public async Task<OperationResult> UpdateUserAccount([FromRoute] Guid accountId, [FromBody] DTOs.UpdateAccount payload)
     {
       var result = await this.passportService.UpdateUserAccount(accountId, payload);
