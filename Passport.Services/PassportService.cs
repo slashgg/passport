@@ -265,6 +265,11 @@ namespace Passport.Services
         return result;
       }
 
+      if (!user.Email.Equals(account.Email, StringComparison.InvariantCultureIgnoreCase))
+      {
+        user.EmailConfirmed = false;
+      }
+
       user.Update(account.Email, account.UserName);
       IdentityResult updateResult = await userManager.UpdateAsync(user);
 
