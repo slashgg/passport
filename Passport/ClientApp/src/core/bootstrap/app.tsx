@@ -1,6 +1,4 @@
-import * as React from 'react';
-import { Router } from 'react-router';
-
+import * as Sentry from '@sentry/browser';
 import {
   AlertHandler,
   Notification,
@@ -10,7 +8,10 @@ import {
   ToasterContextType,
   ToasterState,
 } from '@slashgg/singapore';
+import { GlobalErrorHandler } from 'passport/features/global-error-handler';
 import { RootRouter } from 'passport/routes/root';
+import * as React from 'react';
+import { Router } from 'react-router';
 import { passport } from '../passport';
 
 type State = ToasterState;
@@ -70,4 +71,13 @@ class App extends React.Component<{}, State> implements ToasterActions {
   };
 }
 
-passport.mount(<App />, document.getElementById('root')!);
+Sentry.init({
+  dsn: 'https://127c882dba4d4a86bd815a0675b53ebe@sentry.io/1370311',
+});
+
+passport.mount(
+  <GlobalErrorHandler>
+    <App />
+  </GlobalErrorHandler>,
+  document.getElementById('root')!
+);

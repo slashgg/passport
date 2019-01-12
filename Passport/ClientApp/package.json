@@ -5,6 +5,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@sentry/browser": "^4.5.0",
     "@slashgg/diwali": "0.0.6",
     "@slashgg/singapore": "0.4.5",
     "classnames": "^2.2.6",

@@ -65,6 +65,58 @@
     hey-listen "^1.0.5"
     style-value-types "^3.0.7"
 
+"@sentry/browser@^4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/browser/-/browser-4.5.0.tgz#ae8f876efa1c22a011c5051d050570e3fdacd08b"
+  integrity sha512-Ubx/0XTSiKr98RKOdxIPcD+0ZDQwDUB3MzOFDo4KFReQ3gk5W5EvwatHDiYf0H3VedCA0UEmk2ZXK2sOSSFonQ==
+  dependencies:
+    "@sentry/core" "4.5.0"
+    "@sentry/types" "4.5.0"
+    "@sentry/utils" "4.5.0"
+    tslib "^1.9.3"
+
+"@sentry/core@4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/core/-/core-4.5.0.tgz#0dfb82ea6421681916ce73e6f833de17ae86ac86"
+  integrity sha512-+uzJelvAYQTd60aJ2y8PovqP+CmLFoX3a30yh2Qt9fXomwqYupaAPE+kYtOJMYuXFpVMUTxCxxNPmaC/bwUUIg==
+  dependencies:
+    "@sentry/hub" "4.5.0"
+    "@sentry/minimal" "4.5.0"
+    "@sentry/types" "4.5.0"
+    "@sentry/utils" "4.5.0"
+    tslib "^1.9.3"
+
+"@sentry/hub@4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/hub/-/hub-4.5.0.tgz#f61da6fa33d8b5a90c4324eda220f720d064fbf0"
+  integrity sha512-z9K4YYkMR5x7SdVTGVsWAdWh/PdSJyavar9Nk3I674RRjXS6IewFw7A+cgYDWTuMjB5MslbwoH2S9Pc+xRPKdg==
+  dependencies:
+    "@sentry/types" "4.5.0"
+    "@sentry/utils" "4.5.0"
+    tslib "^1.9.3"
+
+"@sentry/minimal@4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/minimal/-/minimal-4.5.0.tgz#5f4dd50772920af5a44d52a8f1c86e7b37172913"
+  integrity sha512-nH6kL7+I7cL/t7GEK3nv60e2PDg1DGZtakQ1GuqloP19phPj+6BsxjT+Njt1KLcSPsQPWwwK0C6rm0NsamPnpQ==
+  dependencies:
+    "@sentry/hub" "4.5.0"
+    "@sentry/types" "4.5.0"
+    tslib "^1.9.3"
+
+"@sentry/types@4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/types/-/types-4.5.0.tgz#59e2a27d48b01b44e8959aa5c8a30514fe1086a9"
+  integrity sha512-IstPjFoebQGrQWdM732D/+S0BTovmDgezyplk4kLEb87+/B+YK0hlhziUa7B2byTFJGgQQKXy7h2sKZBrA3GUA==
+
+"@sentry/utils@4.5.0":
+  version "4.5.0"
+  resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@sentry/utils/-/utils-4.5.0.tgz#44e33773dc631cc22240a327942a8e4b97d42850"
+  integrity sha512-H05lcDUL3D01f6egjglDO7ICAQ6nOroNHCol9Q3z7lutveGirh4aWFTpw8XU9H7/jnGGZorc0wSrLQtq8vWm7A==
+  dependencies:
+    "@sentry/types" "4.5.0"
+    tslib "^1.9.3"
+
 "@slashgg/diwali@0.0.6":
   version "0.0.6"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/@slashgg/diwali/-/diwali-0.0.6.tgz#9ca5cc7b249847f3059ca09867367ed2c49d6e07"
@@ -5306,7 +5358,7 @@ tsconfig-paths@^3.4.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.1:
+tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.1, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
