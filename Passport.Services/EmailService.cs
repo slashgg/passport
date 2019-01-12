@@ -48,7 +48,7 @@ namespace Passport.Services
 
       // We need to encode the token since it will be used in a reset link.
       var encodedToken = HttpUtility.UrlEncode(token);
-      var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
+      var baseUrl = hosting.IsDevelopment() ? "https://localhost:52215" : "https://passport.slash.gg";
       var link = $"{baseUrl}/password-reset?token={encodedToken}&id={user.Id}";
       var model = new PasswordResetTemplateData {
         ResetLink = link,
@@ -97,7 +97,7 @@ namespace Passport.Services
       }
 
       var encodedToken = HttpUtility.UrlEncode(token);
-      var baseUrl = hosting.IsDevelopment() ? "https://localhost:5001" : "https://passport.slash.gg";
+      var baseUrl = hosting.IsDevelopment() ? "https://localhost:52215" : "https://passport.slash.gg";
       var link = $"{baseUrl}/verify-email?token={encodedToken}&id={user.Id}";
       var model = new VerifyEmailTemplateData
       {

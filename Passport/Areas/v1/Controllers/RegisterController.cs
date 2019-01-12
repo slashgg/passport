@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Passport.DTOs;
 using Passport.Infrastructure;
@@ -63,8 +64,34 @@ namespace Passport.Areas.v1.Controllers
       return BadRequest();
     }
 
+    [HttpGet]
+    [Authorize("Backchannel")]
+    public async Task<OperationResult> ResendEmailVerification([FromBody] ResendEmailVerification dto)
+    {
+      if (dto == null || string.IsNullOrEmpty(dto.Email))
+      {
+        return BadRequest();
+      }
+
+      var token = await passport.GenerateEmailVerificationTokenAsync(dto.Email);
+      if (!string.IsNullOrEmpty(token))
+      {
+        var result = await email.SendWelcomeEmailAsync(token, dto.Email);
+        if (!result.Successful)
+        {
+          logger.LogError($"Failed to send verification email.");
+        }
+      }
+      else
+      {
+        logger.LogError($"Failed to generate an email verification token for {dto.Email}");
+      }
+
+      return Ok();
+    }
+
     [HttpPut]
-    public async Task<OperationResult> Index([FromBody] VerifyEmail model)
+    public async Task<OperationResult> VerifyEmail([FromBody] VerifyEmail model)
     {
       if (!ModelState.IsValid)
       {
