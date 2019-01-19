@@ -25,6 +25,7 @@ using Passport.Utility.Configuration;
 using SendGrid;
 using Svalbard;
 using System;
+using System.IO;
 using System.Net.Http;
 
 namespace Passport
@@ -202,6 +203,11 @@ namespace Passport
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
+
+        var webpackOptions = new Microsoft.AspNetCore.SpaServices.Webpack.WebpackDevMiddlewareOptions();
+        webpackOptions.ProjectPath = Path.Combine(env.ContentRootPath, "ClientApp");
+        webpackOptions.EnvParam = new { mode = "development" };
+        app.UseWebpackDevMiddleware(webpackOptions);
       }
       else
       {
@@ -225,15 +231,14 @@ namespace Passport
             template: "api/{area}/{controller=Home}/{action=Index}/{id?}");
       });
 
-      app.UseSpa(spa =>
-      {
-        spa.Options.SourcePath = "ClientApp";
 
-        if (env.IsDevelopment())
+      if (env.IsProduction())
+      {
+        app.UseSpa(spa =>
         {
-          spa.UseProxyToSpaDevelopmentServer("http://localhost:3001");
-        }
-      });
+          spa.Options.SourcePath = "ClientApp";
+        });
+      }
     }
   }
 }

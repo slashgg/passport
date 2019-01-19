@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = function(env, argv) {
-  const isDev = argv['mode'] === 'development';
+  const isDev = env['mode'] === 'development';
 
   const sassLoader = [
     {
@@ -114,7 +114,7 @@ module.exports = function(env, argv) {
   }
 
   const entry = {
-    main: [`src/core/bootstrap/startup.${argv['mode']}.ts`, 'src/core/bootstrap/app.tsx'],
+    main: [`src/core/bootstrap/startup.${env['mode']}.ts`, 'src/core/bootstrap/app.tsx'],
   };
 
   const devServer = {
@@ -143,7 +143,7 @@ module.exports = function(env, argv) {
   const devtool = isDev ? 'inline-source-map' : 'source-map';
 
   let config = {
-    mode: argv['mode'],
+    mode: env['mode'],
     entry,
     devtool,
     module: {
