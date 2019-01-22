@@ -519,7 +519,7 @@ asn1@~0.2.3:
 aspnet-webpack@^3.0.0:
   version "3.0.0"
   resolved "https://pkgs.dev.azure.com/slashgg/_packaging/slashgg-npm/npm/registry/aspnet-webpack/-/aspnet-webpack-3.0.0.tgz#a7cf4462f4027652104a43f99193986fb1167a08"
-  integrity sha512-umUYjAoWkszsH3GmN6BN9CR9QluhUBx/FH1bn72mC6/VcgeoC1uzlw/J2fi+HyiIuSQHfzNd1rx57GBc7hNqZg==
+  integrity sha1-p89EYvQCdlIQSkP5kZOYb7EWegg=
   dependencies:
     connect "^3.4.1"
     es6-promise "^3.1.2"

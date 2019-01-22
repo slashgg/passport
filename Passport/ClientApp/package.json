@@ -21,8 +21,8 @@
   },
   "scripts": {
     "clean": "rimraf ./build",
-    "start": "rimraf ./build && cross-env webpack-dev-server --mode development",
-    "build": "yarn && rimraf ./build && cross-env webpack --mode production"
+    "start": "rimraf ./build && cross-env webpack-dev-server --env.mode development",
+    "build": "yarn && rimraf ./build && cross-env webpack --env.mode production"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",

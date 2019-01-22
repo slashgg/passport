@@ -34,11 +34,22 @@ class SigninComponent extends React.Component<Props> {
     );
   }
 
-  private handleSubmit = (model: PasswordSignin) => {
-    this.props.invoke({ returnUrl: this.props.returnUrl, ...model }).then(() => {
-      // We have to invoke a full page reload so the server picks this up.
+  private handleSubmit = async (model: PasswordSignin) => {
+    try {
+      const options: RequestInit = {
+        body: JSON.stringify({ returnUrl: this.props.returnUrl, ...model }),
+        credentials: 'same-origin',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'post',
+      };
+      await window.fetch('/api/v1/signin', options);
       window.location.href = this.props.returnUrl;
-    });
+    } catch (err) {
+      console.error(err);
+    }
   };
 }
 
