@@ -140,6 +140,28 @@ namespace Passport
           "profile"
         }
       },
+      new Client
+      {
+        Enabled = true,
+        ClientId = "constantinople",
+        AllowedGrantTypes = new HashSet<string>
+        {
+          GrantType.Implicit,
+        },
+        AllowAccessTokensViaBrowser = true,
+        RedirectUris = new HashSet<string>
+        {
+          "http://localhost:8080/signin-callack",
+          "https://admin.slash.gg/signin-callback",
+        },
+        RequireConsent = false,
+        AllowedScopes = new HashSet<string>
+        {
+          "openid",
+          "profile",
+          "@slashgg/alexandria.admin",
+        }
+      }
     };
   }
 }
