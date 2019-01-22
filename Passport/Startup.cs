@@ -232,7 +232,7 @@ namespace Passport
       });
 
 
-      if (env.IsProduction())
+      if (env.IsDevelopment())
       {
         app.UseSpa(spa =>
         {
