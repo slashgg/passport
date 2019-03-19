@@ -46,7 +46,8 @@ namespace Passport
         {
           "openid",
           "profile",
-          "@slashgg/alexandria.backchannel"
+          "@slashgg/alexandria.backchannel",
+          "@slashgg/alexandria.full_access",
         }
       },
       new Client
@@ -151,14 +152,20 @@ namespace Passport
         AllowAccessTokensViaBrowser = true,
         RedirectUris = new HashSet<string>
         {
-          "http://localhost:8080/signin-callack",
-          "https://admin.slash.gg/signin-callback",
+          "http://localhost:4200/oauth/login-callback",
+          "https://admin.slash.gg/oauth/signin-callback",
         },
         RequireConsent = false,
+        AllowedCorsOrigins = new HashSet<string>
+        {
+          "http://localhost:4200",
+        },
         AllowedScopes = new HashSet<string>
         {
           "openid",
           "profile",
+          "email",
+          "roles",
           "@slashgg/alexandria.admin",
         }
       }

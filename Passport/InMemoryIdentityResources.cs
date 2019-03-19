@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityModel;
+using IdentityServer4.Models;
 using Passport.Utility.Authentication;
 using System.Collections.Generic;
 
@@ -10,7 +11,8 @@ namespace Passport
     {
       new IdentityResources.OpenId(),
       new IdentityResources.Profile(),
-      new IdentityResources.Email()
+      new IdentityResources.Email(),
+      new IdentityResource{Name = "roles", UserClaims = { JwtClaimTypes.Role }}
     };
   }
 }
